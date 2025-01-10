@@ -9,6 +9,8 @@ public:
 	virtual int getAttack() = 0;
 	virtual void takeDamage(int damage) = 0;
 	virtual Item* dropItem() = 0;
+	virtual ~Monster() {
+	}
 };
 
 class Goblin : public Monster {

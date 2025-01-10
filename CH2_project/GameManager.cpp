@@ -39,12 +39,14 @@ void GameManager::battle(Character* player)
             cout << monster->getName() << "를 처치했습니다!" << endl << endl;
             player->setExp(50);
             player->displayStatus();
-
+            player->setGold(player->getLevel() * 10);
             Item* dropedItem = monster->dropItem();
             if (dropedItem != nullptr) {
                 cout << "아이템을 획득하셨습니다." << endl << "획득한 아이템: " << dropedItem->getName() << endl;
                 player->addItem(dropedItem);
             }
+
+            player->visitShop();
             break;
         }
 
@@ -56,10 +58,10 @@ void GameManager::battle(Character* player)
             cout << "플레이어가 사망했습니다!" << endl;
             break;
         }
-        // 아이텍 사용
-        if (player->getHP() <= player->getMaxHP() * 0.5) { // 체력이 절반 이하일 시 발동
+        if (player->getHP() < player->getMaxHP()*0.2) {
             player->useItem(0);
         }
+
     }
 
     // 메모리 해제

@@ -20,6 +20,11 @@ string HealthPotion::getName()
 	return name;
 }
 
+int HealthPotion::getPrice()
+{
+	return price;
+}
+
 // 체력회복을 정해진 값이 아닌 최대체력 비례로 만들어 보았다.
 void HealthPotion::use(Character* character)
 {
@@ -39,6 +44,11 @@ AttackBoost::AttackBoost()
 string AttackBoost::getName()
 {
 	return string();
+}
+
+int AttackBoost::getPrice()
+{
+	return price;
 }
 
 void AttackBoost::use(Character* character)
