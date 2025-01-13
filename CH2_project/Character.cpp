@@ -129,6 +129,11 @@ int Character::getAttack() {
 	return attack;
 }
 
+int Character::setAttack(int buff)
+{
+	return attack += buff;
+}
+
 int Character::takeDamage(int damage) {
 	if (HP - damage < 0) HP = 0;
 	else HP -= damage;

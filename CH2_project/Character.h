@@ -39,6 +39,7 @@ public:
 	int getMaxHP();
 	int setHP(int heal);
 	int getAttack();
+	int setAttack(int buff);
 	int takeDamage(int damage);
 	void setExp(int exp);
 	vector<Item*>& getInventory();		// 아이템 판매 시 필요
