@@ -3,8 +3,8 @@
 class Character;
 
 Shop::Shop() {
-	availableItems.push_back(new HealthPotion());
-	availableItems.push_back(new HealthPotion());
+	availableItems.push_back(new MorPhinePotion());
+	availableItems.push_back(new HeroinPotion());
 }
 
 Shop::~Shop() {				// 소멸자 잊지 않기
