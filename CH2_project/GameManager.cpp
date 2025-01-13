@@ -59,7 +59,7 @@ void GameManager::battle(Character* player)
             break;
         }
         if (player->getHP() < player->getMaxHP()*0.2) {
-            player->useItem(0);
+            player->useItem("HealthPotion");
         }
 
     }

@@ -29,7 +29,7 @@ public:
 	static Character* getInstance(string name);
 	void displayStatus();
 	void levelUp();
-	void useItem(int index);
+	void useItem(const string& itemName);
 	void visitShop();
 
 	//추가된 메서드
