@@ -7,7 +7,7 @@ Shop::Shop() {
 	availableItems.push_back(new HealthPotion());
 }
 
-Shop::~Shop() {
+Shop::~Shop() {				// 소멸자 잊지 않기
 	for (Item* item : availableItems) {
 		delete item;
 	}

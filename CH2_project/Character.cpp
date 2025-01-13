@@ -14,7 +14,6 @@ Character::Character(string name) {
 	gold = 0;
 	HP = maxHP;
 	MP = maxMP;
-
 }
 
 Character* Character::getInstance(string name) {
@@ -164,8 +163,6 @@ void Character::setGold(int gold) {
 
 Character::~Character() {
 	for (Item* item : inventory) {
-		cout << "adress: " << item << endl;
-		cout << "Deleting item: " << item->getName() << endl;
 		delete item;  // 벡터에 저장된 모든 아이템 메모리 해제
 	}
 	inventory.clear();  // 벡터 초기화
