@@ -1,92 +1,99 @@
-#pragma once
+Ôªø#pragma once
 #include <string>
 #include "Character.h"
 
 using namespace std;
 
-// ¿¸πÊ º±æ
+// Ï†ÑÎ∞© ÏÑ†Ïñ∏
 class Character;
 
-// √ﬂªÛ ≈¨∑° Item
+// Ï∂îÏÉÅ ÌÅ¥Îûò Item
 class Item {
 protected:
-	string name; // æ∆¿Ã≈€ ¿Ã∏ß
-	int price; //æ∆¿Ã≈€ ∞°∞›
+	string name; // ÏïÑÏù¥ÌÖú Ïù¥Î¶Ñ
+	int price; //ÏïÑÏù¥ÌÖú Í∞ÄÍ≤©
 
 public:
-	Item(const string& name, int price) : name(name), price(price) {} // ª˝º∫¿⁄
-    virtual ~Item() {} // ∞°ªÛ º“∏Í¿⁄
+	Item(const string& name, int price) : name(name), price(price) {} // ÏÉùÏÑ±Ïûê
+    virtual ~Item() {} // Í∞ÄÏÉÅ ÏÜåÎ©∏Ïûê
 
 	virtual string getName() const {
 		return name;
-	} // æ∆¿Ã≈€ ¿Ã∏ß π›»Ø
-	virtual void use(Character* character) = 0; // ƒ≥∏Ø≈Õø°∞‘ æ∆¿Ã≈€ ªÁøÎ (º¯ºˆ ∞°ªÛ«‘ºˆ)
+	} // ÏïÑÏù¥ÌÖú Ïù¥Î¶Ñ Î∞òÌôò
+	virtual void use(Character* character) = 0; // Ï∫êÎ¶≠ÌÑ∞ÏóêÍ≤å ÏïÑÏù¥ÌÖú ÏÇ¨Ïö© (ÏàúÏàò Í∞ÄÏÉÅÌï®Ïàò)
 	virtual int getPrice() const {
 		return price;
-	} // æ∆¿Ã≈€ ∞°∞› π›»Ø
+	} // ÏïÑÏù¥ÌÖú Í∞ÄÍ≤© Î∞òÌôò
 	
 };
 
-// √º∑¬»∏∫π æ∆¿Ã≈€ : MorPhine
+// Ï≤¥Î†•ÌöåÎ≥µ ÏïÑÏù¥ÌÖú : MorPhine
 class MorPhinePotion : public Item {
 private:
-	int healthRestore; // »∏∫π∑Æ
+	int healthRestore; // ÌöåÎ≥µÎüâ
 	
 
 public:
-	MorPhinePotion(); : Item("Morphine", 25), healthRestore(25){} // √ ±‚»≠
-	void use(Character* Character) override;
+	MorPhinePotion() : Item("Morphine", 10), healthRestore(25){} // Ï¥àÍ∏∞Ìôî -> Í∞ÄÍ≤© 10 ÌöåÎ≥µÎüâ 25ÌöåÎ≥µ ÏÑ§Ï†ï
+	void use(Character* character) override {
+		if (character) {
+			character -> restoreHealth (healthRestore); // Ï≤¥Î†•ÌöåÎ≥µ
+		}
+	}
 };
 
 class CocainePotion : public Item {
 private:
-	string name;
-	int healthRestore = 50;
-	int price = 30;
+	int attackPower; // Í≥µÍ≤©Î†•
 
 public:
-	CocainePotion();
-	string getName();
-	int getPrice();
-	void use(Character* character);
+	CocainePotion() : Item("CocainePotion", 20), attackPower(10){} // Ï¥àÍ∏∞Ìôî -> Í∞ÄÍ≤© 20 Í≥µÍ≤©Î†• 10Ï¶ùÍ∞Ä ÏÑ§Ï†ï
+	void use(Character* character) override {
+		if (character) {
+			character->boostAttack(attackPower); //Í≥µÍ≤©Î†• Ï¶ùÍ∞Ä
+		}
+	}
 };
 
 class HeroinPotion : public Item {
 private:
-	string name;
-	int healthRestore = 50;
-	int price = 30;
+	int healthRestore; // ÌöåÎ≥µÎüâ
 
 public:
-	HeroinPotion();
-	string getName();
-	int getPrice();
-	void use(Character* character);
+	HeroinPotion() : Item("HeroinPotion", 20), healthRestore(50){} // Ï¥àÍ∏∞Ìôî -> Í∞ÄÍ≤© 20 ÌöåÎ≥µÎüâ 50ÌöåÎ≥µ ÏÑ§Ï†ï
+	void use(Character* character) override {
+		if (character) {
+			character->restoreHealth(healthRestore); //Ï≤¥Î†• ÌöåÎ≥µ
+		}
+	}
 };
 
 class LSDPotion : public Item {
 private:
-	string name;
-	int healthRestore = 50;
-	int price = 30;
-
+	int healthRestore; // ÌöåÎ≥µÎüâ
+	int attackPower; // Í≥µÍ≤©Î†•
 public:
-	LSDPotion();
-	string getName();
-	int getPrice();
-	void use(Character* character);
+	LSDPotion() : Item("LSDPotion", 40), healthRestore(50), attackPower(10){} // Ï¥àÍ∏∞Ìôî -> Í∞ÄÍ≤© 40, ÌöåÎ≥µÎüâ 50, Í≥µÍ≤©Î†• 10 Ï¶ùÍ∞Ä
+	void use(Character* character) override {
+		if (character) {
+			character->restoreHealth(healthRestore); //Ï≤¥Î†•ÌöåÎ≥µ
+			character->boostAttack(attackPower); //Í≥µÍ≤©Î†• Ï¶ùÍ∞Ä
+		}
+	}
 };
 
 
 class IVbeltWeapon : public Item {
 private:
-	string name;
-	int attackBoost = 10;
-	int price = 0;
+	int attackPower; // Í≥µÍ≤©Î†•
 
 public:
-	IVbeltWeapon();
-	string getName();
-	int getPrice();
-	void use(Character* character);
+	IVbeltWeapon() : Item("IVbeltWeapon", 0), attackPower(10){} // Ï¥àÍ∏∞Ìôî -> Í∞ÄÍ≤©0, Í≥µÍ≤©Î†• 10Ï¶ùÍ∞Ä
+	void use(Character* character) override {
+		if (character) {
+			character->boostAttack(attackPower); //Í≥µÍ≤©Î†• Ï¶ùÍ∞Ä
+		}
+	}
 };
+
+
