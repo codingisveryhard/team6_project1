@@ -5,34 +5,40 @@ string Item::getName() const
 	return name;
 }
 
-void Item::use(Character* character) {
+void Item::use(Character* character)  {
+}
+
+int Item::getPrice() const
+{
+	return price;
+}
+
+Item* MorPhinePotion::clone() const {
+	return new MorPhinePotion(*this); // 복사본 반환
 }
 
 void MorPhinePotion::use(Character* character) {
 	character->setHP(healthRestore); // 체력회복
 }
 
-int MorPhinePotion::getPrice()
-{
-	return price;
+Item* CocainePotion::clone() const {
+	return new CocainePotion(*this); // 복사본 반환
 }
 
 void CocainePotion::use(Character* character) {
 	character->setAttack(attackPower); //공격력 증가
 }
 
-int CocainePotion::getPrice()
-{
-	return price;
+Item* HeroinPotion::clone() const {
+	return new HeroinPotion(*this); // 복사본 반환
 }
 
 void HeroinPotion::use(Character* character) {
 	character->setHP(healthRestore); //체력 회복
 }
 
-int HeroinPotion::getPrice()
-{
-	return price;
+Item* LSDPotion::clone() const {
+	return new LSDPotion(*this); // 복사본 반환
 }
 
 void LSDPotion::use(Character* character) {
@@ -40,16 +46,10 @@ void LSDPotion::use(Character* character) {
 	character->setAttack(attackPower); //공격력 증가
 }
 
-int LSDPotion::getPrice()
-{
-	return price;
+Item* IVbeltWeapon::clone() const {
+	return new IVbeltWeapon(*this); // 복사본 반환
 }
 
 void IVbeltWeapon::use(Character* character) {
 	character->setAttack(attackPower); //공격력 증가
-}
-
-int IVbeltWeapon::getPrice()
-{
-	return price;
 }

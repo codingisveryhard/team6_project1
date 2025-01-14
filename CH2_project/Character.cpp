@@ -46,7 +46,8 @@ void Character::levelUp() {
 // 원하는 아이템을 꺼내서 쓰는 기능 ai의 도움을 받아 구현
 void Character::useItem(const string& itemName) {			// 아이템의 이름으로 인벤토리에서 검색
 	auto it = std::find_if(inventory.begin(), inventory.end(),		// 솔직히 어떤 원리인지는 이해 못했습니다.
-		[&](Item* item) {											// [&](Item* item) 무슨 의미일까요.
+		[&](Item* item) {									// [&](Item* item) 무슨 의미일까요.
+			if (!item) return false;
 			return item->getName() == itemName;
 		});
 
@@ -76,20 +77,17 @@ void Character::visitShop() {
 
 		int choice;
 		int index;
-		cin >> choice;
-		cin.ignore();
+		choice = _getch() - '0';
 		switch (choice) {
 		case 1:
 			cout << "어떤 아이템을 구매할텐가?" << endl;
 			shop->displayItem();
-			cin >> index;
-			cin.ignore();
+			index = _getch() - '0';
 			shop->buyItem(index - 1, this);
 			break;
 		case 2:
 			cout << "어떤 아이템을 판매할텐가?" << endl;
-			cin >> index;
-			cin.ignore();
+			index = _getch() - '0';
 			shop->sellItem(index - 1, this);
 			break;
 		case 3:
@@ -156,7 +154,6 @@ void Character::addItem(Item* item) {
 		inventory.push_back(item);
 		cout << "아이템: " << item->getName() << "을 인벤토리에 넣었습니다." << endl;
 	}
-	cout << "아이템 추가됨: " << item->getName() << ", 현재 아이템 개수: " << inventory.size() << endl;
 }
 
 int Character::getGold() {

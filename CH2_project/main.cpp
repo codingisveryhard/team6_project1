@@ -6,7 +6,7 @@
 #include "Monster.h"
 #include <cstdlib>  // malloc, free
 #include "background.h"
-#include "CursorMove.h"
+#include "Utility.h"
 
 // 'new' 연산자를 오버라이드하여 메모리 할당을 추적
 //void* operator new(size_t size) {
@@ -33,8 +33,7 @@ using namespace std;
 int main() {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);   // 메모리 누수 확인용
     // _CrtSetBreakAlloc(661);   // 메모리 누수 확인용 (브레이크 포인트 설정)
-
-    // 나중에 클래스로 합쳐야 할 것들---------------------------------
+    
     eraseCursor();      // 커서 지워버리기
     system("mode con cols=120 lines=40 | title 창 제목");  // 콘솔 사이즈 정하기
     title();                // 타이틀 화면 보이게하기

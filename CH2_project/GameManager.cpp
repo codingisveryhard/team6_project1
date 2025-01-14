@@ -21,8 +21,8 @@ BossMonster* GameManager::generateBossMonster(int level)
 
 void GameManager::battle(Character* player)
 {
+    system("cls");
     cout << endl << "전투를 시작합니다!" << endl;
-
     Monster* monster = generateMonster(player->getLevel());
 
     // 몬스터 정보 출력
@@ -45,7 +45,8 @@ void GameManager::battle(Character* player)
                 cout << "아이템을 획득하셨습니다." << endl << "획득한 아이템: " << dropedItem->getName() << endl;
                 player->addItem(dropedItem);
             }
-
+            wait();
+            system("cls");
             player->visitShop();
             break;
         }
@@ -58,9 +59,10 @@ void GameManager::battle(Character* player)
             cout << "플레이어가 사망했습니다!" << endl;
             break;
         }
-        if (player->getHP() < player->getMaxHP()*0.2) {
+        if (player->getHP() < player->getMaxHP()*0.5) {
             player->useItem("Morphine");
         }
+        wait();
 
     }
 
