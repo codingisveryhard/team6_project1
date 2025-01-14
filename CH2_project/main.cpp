@@ -8,7 +8,7 @@
 #include "background.h"
 #include "Utility.h"
 
-// 'new' 연산자를 오버라이드하여 메모리 할당을 추적
+//// 'new' 연산자를 오버라이드하여 메모리 할당을 추적
 //void* operator new(size_t size) {
 //    void* ptr = malloc(size);  // 메모리 할당
 //    if (ptr) {
@@ -19,8 +19,8 @@
 //    }
 //    return ptr;  // 할당된 메모리 주소 반환
 //}
-
-// 선택적으로, 메모리 해제 시에도 로그를 출력하려면 'delete'도 오버라이드
+//
+//// 선택적으로, 메모리 해제 시에도 로그를 출력하려면 'delete'도 오버라이드
 //void operator delete(void* ptr) noexcept {
 //    if (ptr) {
 //        std::cout << "Deallocated memory at: " << ptr << std::endl;
@@ -39,7 +39,6 @@ int main() {
     title();                // 타이틀 화면 보이게하기
     menuDraw();         // 메뉴 화면
     system("cls");      // 콘솔 창을 깨끗하게 만드는 코드
-    // ----------------------------------------------
 
 
     cout << "캐릭터의 이름을 입력해 주세요." << endl << "이름: ";

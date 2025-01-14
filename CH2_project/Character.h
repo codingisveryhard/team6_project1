@@ -6,6 +6,7 @@
 #include <conio.h>
 #include "Item.h"
 #include "Shop.h"
+#include "Observer.h"
 
 using namespace std;
 
@@ -24,6 +25,7 @@ private:
 	int exp;
 	int gold;
 	vector<Item*> inventory;
+	vector<shared_ptr<IObserver>> observers;
 	Character(string name);
 
 public:
