@@ -22,7 +22,7 @@ BossMonster* GameManager::generateBossMonster(int level)
 void GameManager::battle(Character* player)
 {
     system("cls");
-    cout << endl << "전투를 시작합니다!" << endl;
+    cout << endl << "전투가 시작된다!" << endl;
     Monster* monster = generateMonster(player->getLevel());
 
     // 몬스터 정보 출력
@@ -52,11 +52,11 @@ void GameManager::battle(Character* player)
         }
 
         // 몬스터 공격
+        cout << "몬스터가 공격!" << endl;
         player->takeDamage(monster->getAttack());
-        cout << "몬스터가 공격! 플레이어 체력: " << player->getHP() << endl;
+        
         // 플레이어 사망 시
         if (player->getHP() <= 0) {
-            cout << "플레이어가 사망했습니다!" << endl;
             break;
         }
         if (player->getHP() < player->getMaxHP()*0.5) {

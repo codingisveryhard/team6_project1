@@ -10,5 +10,4 @@ void title();
 
 void gameInfo();
 
-
 int menuDraw();

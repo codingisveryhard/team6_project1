@@ -6,13 +6,14 @@
 #include <conio.h>
 #include "Item.h"
 #include "Shop.h"
-#include "Observer.h"
+#include "Subject.h"
+
 
 using namespace std;
 
 class Item;
 
-class Character {
+class Character : public Subject {
 private:
 	static Character* instance;;
 	int maxHP;
@@ -25,8 +26,8 @@ private:
 	int exp;
 	int gold;
 	vector<Item*> inventory;
-	vector<shared_ptr<IObserver>> observers;
 	Character(string name);
+
 
 public:
 	static Character* getInstance(string name);
@@ -51,4 +52,9 @@ public:
 	void setGold(int gold);
 	// 인벤토리에 있는 모든 아이템 메모리 해제
 	~Character();
+
+	// 옵저버 패턴 관련
+	void Attach(const shared_ptr<IObserver>& observer) override;
+	void Detach(const shared_ptr<IObserver>& observer) override;
+	void Subject::NotifyHP(int HP, int change, bool isHeal) override;
 };

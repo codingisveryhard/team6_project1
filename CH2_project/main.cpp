@@ -7,6 +7,8 @@
 #include <cstdlib>  // malloc, free
 #include "background.h"
 #include "Utility.h"
+#include "Observer.h"
+#include "ConcreteObservers.h"
 
 //// 'new' 연산자를 오버라이드하여 메모리 할당을 추적
 //void* operator new(size_t size) {
@@ -47,13 +49,16 @@ int main() {
     // 싱글턴 인스턴스 생성
     Character* player = Character::getInstance(name);
 
+    auto healthBar = make_shared<HealthBar>();
+    player->Attach(healthBar);
+
     // GameManager 인스턴스 생성
     GameManager gameManager;
 
     cout << "===== 캐릭터 생성 =====" << endl;
     player->displayStatus();
     // 10레벨이 될 때까지 전투
-    while (player->getLevel() != 10 && player->getHP() != 0) {
+    while (player->getLevel() != 3 && player->getHP() != 0) {
         gameManager.battle(player);
     }
     Character::destroyInstance();
