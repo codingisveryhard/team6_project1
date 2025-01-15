@@ -24,19 +24,24 @@ Character* Character::getInstance(string name) {
 }
 
 void Character::displayStatus() {
-	cout << "Name: " << name << endl;
-	cout << "Level: " << level << endl;
-	cout << "HP: " << HP << "/" << maxHP << endl;
-	cout << "MP: " << MP << endl;
-	cout << "Attack: " << attack << endl;
-	cout << "Exp: " << exp << endl;
+	int x = 25;
+	int y = 15;
+	printScript(x, y, "Name: " + name);
+	printScript(x, y, "Level: " + to_string(level));
+	printScript(x, y, "HP: " + to_string(HP) + "/" + to_string(maxHP));
+	printScript(x, y, "MP: " + to_string(MP));
+	printScript(x, y, "Attack: " + to_string(attack));
+	printScript(x, y, "Exp: " + to_string(exp));
+	printScript(x, y, "Exp: " + to_string(gold));
 }
 
 void Character::levelUp() {
+	int x = 25;
+	int y = 14;
 	while (exp >= 100) {
 		level++;
 		exp %= 100;
-		cout << "레벨업! 현재 레벨: " << level << endl;
+		printScript(x, y, "레벨업! 현재 레벨: " + to_string(level));
 		maxHP = maxHP + 20;
 		maxMP = maxMP + 10;
 		attack = attack + 5;
@@ -66,13 +71,14 @@ void Character::useItem(const string& itemName) {			// 아이템의 이름으로
 }
 
 void Character::visitShop() {
-	cout << "상점을 방문했습니다." << endl;
 	bool exitShop = false;
 	Shop* shop = new Shop;
 	while (!exitShop){
-		cout << "1. 아이템 구매" << endl;
-		cout << "2. 아이템 판매" << endl;
-		cout << "3. 상점 나가기" << endl;
+		int x = 15;
+		int y = 25;
+		printScript(x, y, "1. 아이템 구매");
+		printScript(x, y, "2. 아이템 판매");
+		printScript(x, y, "3. 상점 나가기");
 
 
 		int choice;
@@ -80,13 +86,17 @@ void Character::visitShop() {
 		choice = _getch() - '0';
 		switch (choice) {
 		case 1:
-			cout << "어떤 아이템을 구매할텐가?" << endl;
+			x = 50;
+			y = 15;
+			printScript(x, y, "어떤 아이템을 구매할텐가?");
 			shop->displayItem();
 			index = _getch() - '0';
 			shop->buyItem(index - 1, this);
 			break;
 		case 2:
-			cout << "어떤 아이템을 판매할텐가?" << endl;
+			x = 50;
+			y = 15;
+			printScript(x, y, "어떤 아이템을 판매할텐가?");
 			index = _getch() - '0';
 			shop->sellItem(index - 1, this);
 			break;
@@ -172,7 +182,6 @@ int Character::getGold() {
 void Character::setGold(int gold) {
 
 	this->gold += gold;
-	cout << "현재 골드량: " << this->gold << endl;
 }
 
 Character::~Character() {
