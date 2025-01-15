@@ -3,6 +3,7 @@
 #include "Utility.h"
 #include <queue>
 
+
 using namespace std;
 
 class Script {
@@ -16,6 +17,7 @@ private:
 public:
 	void start();
 	void LocateXY(int x, int y);
+
 	void printbattleLog(const string& text);
 
 };

@@ -22,6 +22,7 @@ void Script::start() {
 void Script::LocateXY(int x, int y) {
 	X = x;
 	Y = y;
+
 }
 
 void Script::printbattleLog(const string& text) {
@@ -42,5 +43,3 @@ void Script::printbattleLog(const string& text) {
 		tempQueue.pop(); // 출력한 로그 제거
 	}
 }
-
-

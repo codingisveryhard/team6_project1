@@ -28,10 +28,14 @@ void GameManager::battle(Character* player)
     Monster* monster = generateMonster(player->getLevel());
 
     // 몬스터 정보 출력
+
     script.printbattleLog("몬스터 등장: " + monster->getName());
     script.printbattleLog("체력: " + to_string(monster->getHP()) + ", 공격력: " + to_string(monster->getAttack()));
     gotoxy(15, 4);
     cout << monster->getName();
+
+    monster->speak(); // 몬스터가 처음 등장할 때 대사 출력 수정
+
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
         script.printbattleLog(to_string(i) + " 번째 턴!");
         // 플레이어 공격
@@ -39,9 +43,13 @@ void GameManager::battle(Character* player)
         script.printbattleLog("플레이어가 공격! " + monster->getName() + "의 체력: " + to_string(monster->getHP()));
         // 몬스터 처치 시
         if (monster->getHP() <= 0) {
+
             script.printbattleLog(monster->getName() + "를 처치했습니다!");
             player->setExp(50);                         // 경험치 획득량
             player->setGold(player->getLevel() * 10);   // 골드 획득량
+
+            monster->speak(); // 몬스터가 죽기 전 대사 출력 수정
+
             player->displayStatus();
             Item* dropedItem = monster->dropItem();
             if (dropedItem != nullptr) {
