@@ -21,4 +21,6 @@ void eraseCursor();
 
 void wait();
 
+void printScript(int& x, int& y, const string& text);
+
 
