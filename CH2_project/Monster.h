@@ -1,6 +1,7 @@
 #pragma once
 #include "Item.h"
 #include <string>
+using namespace std; // 수정사항 250115
 
 class Monster {
 public:
@@ -9,6 +10,8 @@ public:
 	virtual int getAttack() = 0;
 	virtual void takeDamage(int damage) = 0;
 	virtual Item* dropItem() = 0;
+
+	virtual void speak() = 0; // 수정사항 250115
 	virtual ~Monster() {
 	}
 };
@@ -27,6 +30,8 @@ public:
 	int getAttack() override;
 	void takeDamage(int damage) override;
 	Item* dropItem() override;
+
+	void speak() override; //수정사항 250115
 };
 
 class Orc : public Monster {
@@ -43,6 +48,8 @@ public:
 	int getAttack() override;
 	void takeDamage(int damage) override;
 	Item* dropItem() override;
+	
+	void speak() override; // 수정사항 250115
 };
 
 class Troll : public Monster {
@@ -59,6 +66,8 @@ public:
 	int getAttack() override;
 	void takeDamage(int damage) override;
 	Item* dropItem() override;
+
+	void speak() override; //수정사항 250115
 };
 
 class BossMonster : public Monster {
@@ -74,4 +83,6 @@ public:
 	int getAttack() override;
 	void takeDamage(int damage) override;
 	Item* dropItem() override;
+
+	void speak() override; //수정사항 250115
 };

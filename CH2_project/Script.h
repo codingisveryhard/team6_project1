@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Utility.h"
 
+
 using namespace std;
 
 class Script {
@@ -13,4 +14,3 @@ public:
 	void start();
 	void LocateXY(int x, int y);
 };
-

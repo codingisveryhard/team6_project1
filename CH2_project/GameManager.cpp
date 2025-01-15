@@ -29,6 +29,8 @@ void GameManager::battle(Character* player)
     cout << "몬스터 등장: " << monster->getName();
     cout << "체력: " << monster->getHP() << ", 공격력: " << monster->getAttack() << endl << endl;
 
+    monster->speak(); // 몬스터가 처음 등장할 때 대사 출력 수정
+
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
         cout << endl << i << " 번째 턴!" << endl;
         // 플레이어 공격
@@ -37,6 +39,9 @@ void GameManager::battle(Character* player)
         // 몬스터 처치 시
         if (monster->getHP() <= 0) {
             cout << monster->getName() << "를 처치했습니다!" << endl << endl;
+
+            monster->speak(); // 몬스터가 죽기 전 대사 출력 수정
+
             player->setExp(50);
             player->displayStatus();
             player->setGold(player->getLevel() * 10);
