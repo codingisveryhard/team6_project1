@@ -7,6 +7,7 @@
 #include "Item.h"
 #include "Shop.h"
 #include "Subject.h"
+#include "Utility.h"
 
 
 using namespace std;

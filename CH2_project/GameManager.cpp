@@ -22,37 +22,40 @@ BossMonster* GameManager::generateBossMonster(int level)
 void GameManager::battle(Character* player)
 {
     system("cls");
-    cout << endl << "전투가 시작된다!" << endl;
+    battlePhase();
+    Script script;
+    script.printbattleLog("전투가 시작된다!");
     Monster* monster = generateMonster(player->getLevel());
 
     // 몬스터 정보 출력
-    cout << "몬스터 등장: " << monster->getName();
-    cout << "체력: " << monster->getHP() << ", 공격력: " << monster->getAttack() << endl << endl;
-
+    script.printbattleLog("몬스터 등장: " + monster->getName());
+    script.printbattleLog("체력: " + to_string(monster->getHP()) + ", 공격력: " + to_string(monster->getAttack()));
+    gotoxy(15, 4);
+    cout << monster->getName();
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
-        cout << endl << i << " 번째 턴!" << endl;
+        script.printbattleLog(to_string(i) + " 번째 턴!");
         // 플레이어 공격
         monster->takeDamage(player->getAttack());
-        cout << "플레이어가 공격! " << monster->getName() << "의 체력: " << monster->getHP() << endl;
+        script.printbattleLog("플레이어가 공격! " + monster->getName() + "의 체력: " + to_string(monster->getHP()));
         // 몬스터 처치 시
         if (monster->getHP() <= 0) {
-            cout << monster->getName() << "를 처치했습니다!" << endl << endl;
-            player->setExp(50);
+            script.printbattleLog(monster->getName() + "를 처치했습니다!");
+            player->setExp(50);                         // 경험치 획득량
+            player->setGold(player->getLevel() * 10);   // 골드 획득량
             player->displayStatus();
-            player->setGold(player->getLevel() * 10);
             Item* dropedItem = monster->dropItem();
             if (dropedItem != nullptr) {
-                cout << "아이템을 획득하셨습니다." << endl << "획득한 아이템: " << dropedItem->getName() << endl;
+                script.printbattleLog("아이템을 획득하셨습니다. 획득한 아이템: " + dropedItem->getName());
                 player->addItem(dropedItem);
             }
             wait();
-            system("cls");
+            shopWindow();
             player->visitShop();
             break;
         }
 
         // 몬스터 공격
-        cout << "몬스터가 공격!" << endl;
+        script.printbattleLog("몬스터가 공격!");
         player->takeDamage(monster->getAttack());
         
         // 플레이어 사망 시

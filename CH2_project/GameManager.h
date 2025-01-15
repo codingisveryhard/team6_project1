@@ -2,6 +2,8 @@
 #include "Character.h"
 #include "Monster.h"
 #include "Utility.h"
+#include "Script.h"
+#include "Background.h"
 
 
 class GameManager {

@@ -39,13 +39,18 @@ int main() {
     
     eraseCursor();      // 커서 지워버리기
     system("mode con cols=120 lines=40 | title 창 제목");  // 콘솔 사이즈 정하기
-    title();                // 타이틀 화면 보이게하기
+    titleImg();                // 타이틀 화면 보이게하기
     menuDraw();         // 메뉴 화면
     system("cls");      // 콘솔 창을 깨끗하게 만드는 코드
     
     Script script;
     script.start();
-    cout << "캐릭터의 이름을 입력해 주세요." << endl << "이름: ";
+    
+    int X = 40;
+    int Y = 15;
+    printScript(X, Y, "캐릭터의 이름을 입력해 주세요.");
+    printScript(X, Y, "이름: ");
+    gotoxy(46, 16);
     string name;
     getline(cin, name);
     // 싱글턴 인스턴스 생성
@@ -54,13 +59,14 @@ int main() {
     auto healthBar = make_shared<HealthBar>();
     player->Attach(healthBar);
 
+
     // GameManager 인스턴스 생성
     GameManager gameManager;
 
     cout << "===== 캐릭터 생성 =====" << endl;
     player->displayStatus();
     // 10레벨이 될 때까지 전투
-    while (player->getLevel() != 3 && player->getHP() != 0) {
+    while (player->getLevel() != 10 && player->getHP() != 0) {
         gameManager.battle(player);
     }
     Character::destroyInstance();
