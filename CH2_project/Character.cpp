@@ -103,7 +103,6 @@ void Character::visitShop() {
 void Character::destroyInstance(){
 	delete instance;  // 메모리 해제
 	instance = nullptr;  // 안전하게 포인터 초기화
-	cout << "Character 인스턴스를 삭제합니다." << endl;
 }
 
 int Character::getLevel() {
@@ -120,7 +119,9 @@ int Character::getMaxHP()
 }
 
 int Character::setHP(int heal) {
-	return HP += heal;
+	HP += heal;
+	NotifyHP(HP, heal, true);
+	return HP;
 }
 
 int Character::getAttack() {
@@ -133,8 +134,10 @@ int Character::setAttack(int buff)
 }
 
 int Character::takeDamage(int damage) {
+	HP -= damage;
 	if (HP - damage < 0) HP = 0;
-	else HP -= damage;
+	NotifyHP(HP, damage, false);
+
 	return HP;
 }
 
@@ -161,8 +164,7 @@ int Character::getGold() {
 }
 
 void Character::setGold(int gold) {
-	if (gold >= 0) cout << "골드를 " << gold << "만큼 획득하셨습니다." << endl;
-	else cout << "골드를 " << gold * -1 << "만큼 소모하셨습니다." << endl;
+
 	this->gold += gold;
 	cout << "현재 골드량: " << this->gold << endl;
 }
@@ -172,4 +174,18 @@ Character::~Character() {
 		delete item;  // 벡터에 저장된 모든 아이템 메모리 해제
 	}
 	inventory.clear();  // 벡터 초기화
+}
+
+void Character::Attach(const shared_ptr<IObserver>& observer) {
+	observers.push_back(observer);
+}
+
+void Character::Detach(const shared_ptr<IObserver>& observer) {
+	observers.erase(remove(observers.begin(), observers.end(), observer), observers.end());
+}
+
+void Character::NotifyHP(int HP, int change, bool isHeal) {
+	for (const auto& observer : observers) {
+		observer->updateHP(HP, change, isHeal);
+	}
 }

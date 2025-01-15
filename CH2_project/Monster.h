@@ -18,6 +18,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	Goblin(int level);
@@ -33,6 +34,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	Orc(int level);
@@ -48,6 +50,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	Troll(int level);

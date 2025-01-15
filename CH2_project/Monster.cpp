@@ -25,7 +25,7 @@ void Goblin::takeDamage(int damage) {
 Item* Goblin::dropItem() {
     int dropRate = rand() % 10;
     if (dropRate < 3) {
-        return new MorPhinePotion();
+        return new MorPhinePotion(morphinePotion);
     }
     return nullptr;
 }
@@ -55,7 +55,7 @@ void Orc::takeDamage(int damage) {
 Item* Orc::dropItem() {
     int dropRate = rand() % 10;
     if (dropRate < 3) {
-        return new MorPhinePotion();
+        return new MorPhinePotion(morphinePotion);
     }
     return nullptr;
 }Troll::Troll(int level) : name("Troll") {
@@ -83,7 +83,7 @@ void Troll::takeDamage(int damage) {
 Item* Troll::dropItem() {
     int dropRate = rand() % 10;
     if (dropRate < 3) {
-        return new MorPhinePotion();
+        return new MorPhinePotion(morphinePotion);
     }
     return nullptr;
 }
