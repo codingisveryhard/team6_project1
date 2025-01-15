@@ -54,3 +54,8 @@ void wait() {
 		}
 	}
 }
+
+void printScript(int& x, int& y, const string& text) {
+	gotoxy(x, y++); // 현재 위치에 출력 후 Y 좌표 증가
+	cout << text << endl;
+}

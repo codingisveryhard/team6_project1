@@ -9,6 +9,7 @@
 #include "Utility.h"
 #include "Observer.h"
 #include "ConcreteObservers.h"
+#include "Script.h"
 
 //// 'new' 연산자를 오버라이드하여 메모리 할당을 추적
 //void* operator new(size_t size) {
@@ -41,8 +42,9 @@ int main() {
     title();                // 타이틀 화면 보이게하기
     menuDraw();         // 메뉴 화면
     system("cls");      // 콘솔 창을 깨끗하게 만드는 코드
-
-
+    
+    Script script;
+    script.start();
     cout << "캐릭터의 이름을 입력해 주세요." << endl << "이름: ";
     string name;
     getline(cin, name);

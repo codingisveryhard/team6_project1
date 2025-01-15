@@ -135,6 +135,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="Observer.cpp" />
+    <ClCompile Include="Script.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="Subject.cpp" />
     <ClCompile Include="Utility.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Observer.h" />
+    <ClInclude Include="Script.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="Subject.h" />
     <ClInclude Include="Utility.h" />

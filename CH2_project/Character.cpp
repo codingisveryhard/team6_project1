@@ -133,6 +133,12 @@ int Character::setAttack(int buff)
 	return attack += buff;
 }
 
+int Character::displayInventory()
+{
+
+	return 0;
+}
+
 int Character::takeDamage(int damage) {
 	HP -= damage;
 	if (HP - damage < 0) HP = 0;
