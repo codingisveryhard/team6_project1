@@ -23,6 +23,7 @@ void GameManager::battle(Character* player)
 {
     system("cls");
     battlePhase();
+    stage1();
     Script script;
     script.printbattleLog("전투가 시작된다!");
     Monster* monster = generateMonster(player->getLevel());
