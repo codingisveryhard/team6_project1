@@ -66,7 +66,7 @@ int main() {
     cout << "===== 캐릭터 생성 =====" << endl;
     player->displayStatus();
     // 10레벨이 될 때까지 전투
-    while (player->getLevel() != 10 && player->getHP() != 0) {
+    while (player->getLevel() != 8 && player->getHP() != 0) {
         gameManager.battle(player);
     }
     Character::destroyInstance();

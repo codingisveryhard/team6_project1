@@ -2,35 +2,35 @@
 
 Monster* GameManager::generateMonster(int level)
 {
-    int randomMonster = rand() % 3;
-    if (randomMonster == 0) {
-        return new Goblin(level);
-    }
-    else if (randomMonster == 1) {
-        return new Orc(level);
-    }
-    else if(randomMonster == 2) {
-        return new Troll(level);
-    }
-    else if (randomMonster == 3) {
+    //int randomMonster = rand() % 3;
+    //if (randomMonster == 0) {
+    //    return new Goblin(level);
+    //}
+    //else if (randomMonster == 1) {
+    //    return new Orc(level);
+    //}
+    //else if(randomMonster == 2) {
+    //    return new Troll(level);
+    //}
+    if (level == 1) {
         return new BlindMonster(level); // 몬스터 추가 0116
     }
-    else if (randomMonster == 4) {
+    else if (level == 2) {
         return new EyesMonster(level);
     }
-    else if (randomMonster == 5) {
+    else if (level == 3) {
         return new BigEaredMonster(level);
     }
-    else if (randomMonster == 6) {
+    else if (level == 4) {
         return new PerforatedMonster(level);
     }
-    else if (randomMonster == 7) {
+    else if (level == 5) {
         return new ChildMonster(level);
     }
-    else if (randomMonster == 8) {
+    else if (level == 6) {
         return new CryingMonster(level);
     }
-    else if (randomMonster == 9) {
+    else if (level == 7) {
         return new FacelessMan(level);
     }
 }
@@ -44,7 +44,7 @@ void GameManager::battle(Character* player)
 {
     system("cls");
     battlePhase();
-    stage1();
+    stageDraw(player->getLevel());
     Script script;
     script.printbattleLog("전투가 시작된다!");
     Monster* monster = generateMonster(player->getLevel());
@@ -102,11 +102,8 @@ void GameManager::battle(Character* player)
         script.printbattleLog("플레이어가 공격! " + monster->getName() + "의 체력: " + to_string(monster->getHP()));
         // 몬스터 처치 시
         if (monster->getHP() <= 0) {
-            cout << monster->getName() << "를 처치했습니다!" << endl << endl;
-            player->setExp(50);
-
             script.printbattleLog(monster->getName() + "를 처치했습니다!");
-            player->setExp(50);                         // 경험치 획득량
+            player->setExp(100);                         // 경험치 획득량
             player->setGold(player->getLevel() * 10);   // 골드 획득량
 
             monster->speak(); // 몬스터가 죽은 후 대사 출력 수정
@@ -184,4 +181,14 @@ void GameManager::visitShop(Character* player)
 
 void GameManager::displayInventory(Character* player)
 {
+}
+
+void GameManager::stageDraw(int level) {
+    if (level == 1) stage1();
+    else if (level == 2) stage2();
+    else if (level == 3) stage3();
+    else if (level == 4) stage4();
+    else if (level == 5) stage5();
+    else if (level == 6) stage6();
+    else if (level == 7) stage7();
 }
