@@ -4,7 +4,9 @@ class Character;
 
 Shop::Shop() {
 	availableItems.push_back(new MorPhinePotion());
+	availableItems.push_back(new CocainePotion());
 	availableItems.push_back(new HeroinPotion());
+	availableItems.push_back(new LSDPotion());
 }
 
 Shop::~Shop() {				// 소멸자 잊지 않기
@@ -19,11 +21,13 @@ void Shop::displayItem(){
 	printScript(x, y, "귀한 물건들이라네 한번 골라보게");
 	int num = 1;
 	y = 15;
+	setColor(blue, red);
 	for (Item* item : availableItems) {
-
+		
 		printScript(x, y, "[" + to_string(num) + "]" + item->getName() + "  가격:" + to_string(item->getPrice()));
 		num++;
 	}
+	setColor(white, black);
 }
 
 void Shop::buyItem(int index, Character* player) {
@@ -98,7 +102,7 @@ int Shop::shopItemSelect() {
 			}
 			break;
 		case DOWN:
-			if (y < 21) {
+			if (y < 22) {
 				gotoxy(x, y);
 				cout << " ";
 				y++;

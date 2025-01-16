@@ -18,7 +18,7 @@ Item* MorPhinePotion::clone() const {
 }
 
 void MorPhinePotion::use(Character* character) {
-	character->setHP(attackPower); // 체력회복
+	character->setAttack(attackPower); // 체력회복
 }
 
 Item* CocainePotion::clone() const {
@@ -34,7 +34,7 @@ Item* HeroinPotion::clone() const {
 }
 
 void HeroinPotion::use(Character* character) {
-	character->setHP(healthRestore); //체력 회복
+	character->setMaxHP(healthRestore); //체력 회복
 }
 
 Item* LSDPotion::clone() const {
@@ -42,7 +42,7 @@ Item* LSDPotion::clone() const {
 }
 
 void LSDPotion::use(Character* character) {
-	character->setHP(healthRestore); //체력회복
+	character->setMaxHP(healthRestore); //체력회복
 	character->setAttack(attackPower); //공격력 증가
 }
 

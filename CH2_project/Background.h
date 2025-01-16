@@ -40,3 +40,9 @@ void monsterImg4();
 void monsterImg5();
 void monsterImg6();
 void monsterImg7();
+
+
+
+void happyEnd();
+
+void badEnd();
