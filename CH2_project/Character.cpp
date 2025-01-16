@@ -14,7 +14,6 @@ Character::Character(string name) {
 	gold = 0;
 	HP = maxHP;
 	MP = maxMP;
-
 }
 
 Character* Character::getInstance(string name) {
@@ -25,68 +24,80 @@ Character* Character::getInstance(string name) {
 }
 
 void Character::displayStatus() {
-	cout << "Name: " << name << endl;
-	cout << "Level: " << level << endl;
-	cout << "HP: " << HP << "/" << maxHP << endl;
-	cout << "MP: " << MP << endl;
-	cout << "Attack: " << attack << endl;
-	cout << "Exp: " << exp << endl;
+	int x = 25;
+	int y = 15;
+	printScript(x, y, "Name: " + name);
+	printScript(x, y, "Level: " + to_string(level));
+	printScript(x, y, "HP: " + to_string(HP) + "/" + to_string(maxHP));
+	printScript(x, y, "MP: " + to_string(MP));
+	printScript(x, y, "Attack: " + to_string(attack));
+	printScript(x, y, "Exp: " + to_string(exp));
+	printScript(x, y, "Exp: " + to_string(gold));
 }
 
 void Character::levelUp() {
+	int x = 25;
+	int y = 14;
 	while (exp >= 100) {
 		level++;
 		exp %= 100;
-		cout << "레벨업! 현재 레벨: " << level << endl;
+		printScript(x, y, "레벨업! 현재 레벨: " + to_string(level));
 		maxHP = maxHP + 20;
 		maxMP = maxMP + 10;
 		attack = attack + 5;
 		HP = maxHP;
 	}
 }
-// 원하는 아이템을 꺼내서 쓰는 기능 구현 못함
-void Character::useItem(int index) {
-	if (index < 0 || index >= inventory.size()) {
+// 원하는 아이템을 꺼내서 쓰는 기능 ai의 도움을 받아 구현
+void Character::useItem(const string& itemName) {			// 아이템의 이름으로 인벤토리에서 검색
+	auto it = std::find_if(inventory.begin(), inventory.end(),		// 솔직히 어떤 원리인지는 이해 못했습니다.
+		[&](Item* item) {									// [&](Item* item) 무슨 의미일까요.
+			if (!item) return false;
+			return item->getName() == itemName;
+		});
+
+	if (it == inventory.end()) {
 		cout << "소지하고 있지 않은 아이템입니다." << endl;
 		return;
 	}
 
-	else {
-		Item* item = inventory[0];
-		item->use(this);
-		cout << item->getName() << "을 사용했습니다" << endl;
-		inventory.erase(inventory.begin() + 0);
-		delete item;
-		cout << "남은 아이템 개수: " << inventory.size() << endl;
-	}
+	Item* item = *it; // 찾은 아이템
+	item->use(this); // 아이템 사용
+	cout << item->getName() << "을 사용했습니다" << endl;
+
+	inventory.erase(it); // 인벤토리에서 제거
+	delete item; // 메모리 해제
+	cout << "남은 아이템 개수: " << inventory.size() << endl;
 }
 
 void Character::visitShop() {
-	cout << "상점을 방문했습니다." << endl;
 	bool exitShop = false;
 	Shop* shop = new Shop;
 	while (!exitShop){
-		cout << "1. 아이템 구매" << endl;
-		cout << "2. 아이템 판매" << endl;
-		cout << "3. 상점 나가기" << endl;
+		int x = 15;
+		int y = 25;
+		printScript(x, y, "1. 아이템 구매");
+		printScript(x, y, "2. 아이템 판매");
+		printScript(x, y, "3. 상점 나가기");
 
 
 		int choice;
 		int index;
-		cin >> choice;
-		cin.ignore();
+		choice = _getch() - '0';
 		switch (choice) {
 		case 1:
-			cout << "어떤 아이템을 구매할텐가?" << endl;
+			x = 50;
+			y = 15;
+			printScript(x, y, "어떤 아이템을 구매할텐가?");
 			shop->displayItem();
-			cin >> index;
-			cin.ignore();
+			index = _getch() - '0';
 			shop->buyItem(index - 1, this);
 			break;
 		case 2:
-			cout << "어떤 아이템을 판매할텐가?" << endl;
-			cin >> index;
-			cin.ignore();
+			x = 50;
+			y = 15;
+			printScript(x, y, "어떤 아이템을 판매할텐가?");
+			index = _getch() - '0';
 			shop->sellItem(index - 1, this);
 			break;
 		case 3:
@@ -102,7 +113,6 @@ void Character::visitShop() {
 void Character::destroyInstance(){
 	delete instance;  // 메모리 해제
 	instance = nullptr;  // 안전하게 포인터 초기화
-	cout << "Character 인스턴스를 삭제합니다." << endl;
 }
 
 int Character::getLevel() {
@@ -119,16 +129,31 @@ int Character::getMaxHP()
 }
 
 int Character::setHP(int heal) {
-	return HP += heal;
+	HP += heal;
+	NotifyHP(HP, heal, true);
+	return HP;
 }
 
 int Character::getAttack() {
 	return attack;
 }
 
+int Character::setAttack(int buff)
+{
+	return attack += buff;
+}
+
+int Character::displayInventory()
+{
+
+	return 0;
+}
+
 int Character::takeDamage(int damage) {
+	HP -= damage;
 	if (HP - damage < 0) HP = 0;
-	else HP -= damage;
+	NotifyHP(HP, damage, false);
+
 	return HP;
 }
 
@@ -148,7 +173,6 @@ void Character::addItem(Item* item) {
 		inventory.push_back(item);
 		cout << "아이템: " << item->getName() << "을 인벤토리에 넣었습니다." << endl;
 	}
-	cout << "아이템 추가됨: " << item->getName() << ", 현재 아이템 개수: " << inventory.size() << endl;
 }
 
 int Character::getGold() {
@@ -156,17 +180,27 @@ int Character::getGold() {
 }
 
 void Character::setGold(int gold) {
-	if (gold >= 0) cout << "골드를 " << gold << "만큼 획득하셨습니다." << endl;
-	else cout << "골드를 " << gold * -1 << "만큼 소모하셨습니다." << endl;
+
 	this->gold += gold;
-	cout << "현재 골드량: " << this->gold << endl;
 }
 
 Character::~Character() {
 	for (Item* item : inventory) {
-		cout << "adress: " << item << endl;
-		cout << "Deleting item: " << item->getName() << endl;
 		delete item;  // 벡터에 저장된 모든 아이템 메모리 해제
 	}
 	inventory.clear();  // 벡터 초기화
+}
+
+void Character::Attach(const shared_ptr<IObserver>& observer) {
+	observers.push_back(observer);
+}
+
+void Character::Detach(const shared_ptr<IObserver>& observer) {
+	observers.erase(remove(observers.begin(), observers.end(), observer), observers.end());
+}
+
+void Character::NotifyHP(int HP, int change, bool isHeal) {
+	for (const auto& observer : observers) {
+		observer->updateHP(HP, change, isHeal);
+	}
 }

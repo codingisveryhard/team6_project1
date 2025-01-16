@@ -49,7 +49,7 @@ public:
 	int getAttack() override;
 	void takeDamage(int damage) override;
 	Item* dropItem() override;
-
+  
 	void speak() override; // 수정사항 250115
 };
 

@@ -1,7 +1,9 @@
 #pragma once
 #include "Character.h"
 #include "Monster.h"
-#include <algorithm>
+#include "Utility.h"
+#include "Script.h"
+#include "Background.h"
 
 
 class GameManager {
