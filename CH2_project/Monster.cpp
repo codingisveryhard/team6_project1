@@ -238,7 +238,7 @@ Item* BlindMonster::dropItem() {
 void BlindMonster::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "아무것도 보고싶지 않아.." << endl;;
     }
     else {
         cout << name << ":내가 지다니.." << endl;
@@ -289,7 +289,7 @@ Item* EyesMonster::dropItem() {
 void EyesMonster::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "수군수군…수군수군…" << endl;
     }
     else {
         cout << name << ":내가 지다니.." << endl;
@@ -340,7 +340,7 @@ Item* BigEaredMonster::dropItem() {
 void BigEaredMonster::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "시끄러워..! 조용히… 조용히해!!!" << endl;
     }
     else {
         cout << name << ":내가 지다니.." << endl;
@@ -391,7 +391,7 @@ Item* PerforatedMonster::dropItem() {
 void PerforatedMonster::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "운동…건강…프로틴…!!" << endl;
     }
     else {
         cout << name << ":내가 지다니.." << endl;
@@ -442,7 +442,7 @@ Item* ChildMonster::dropItem() {
 void ChildMonster::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "내 꿈은…?" << endl;
     }
     else {
         cout << name << ":내가 지다니.." << endl;
@@ -493,7 +493,7 @@ Item* CryingMonster::dropItem() {
 void CryingMonster::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "흑흑…" << endl;
     }
     else {
         cout << name << ":내가 지다니.." << endl;
@@ -544,7 +544,10 @@ Item* FacelessMan::dropItem() {
 void FacelessMan::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "여기 까지 오면서 기분은 좀 어땠나?" << endl;
+        cout << "아직도 ”그것”에 의존하며 살고있는겐가?" << endl;
+        cout << "옳은 일을 했을거라 믿는다." << endl;
+        cout << "“의지”가 있었다면 말이야" << endl;
     }
     else {
         cout << name << ":내가 지다니.." << endl;
