@@ -24,9 +24,10 @@ Character* Character::getInstance(string name) {
 }
 
 void Character::displayStatus() {
-	int x = 23;
+	int x = 21;
 	int y = 14;
 	printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
 	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
 	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
 	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
@@ -35,8 +36,8 @@ void Character::displayStatus() {
 	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⣿");
 	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
 	printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
-	x = 25;
-	y = 15;
+	x = 23;
+	y = 16;
 	printScript(x, y, "Name: " + name);
 	printScript(x, y, "Level: " + to_string(level));
 	printScript(x, y, "HP: " + to_string(HP) + "/" + to_string(maxHP));
@@ -44,20 +45,32 @@ void Character::displayStatus() {
 	printScript(x, y, "Attack: " + to_string(attack));
 	printScript(x, y, "Exp: " + to_string(exp));
 	printScript(x, y, "Exp: " + to_string(gold));
+	levelUp();
 }
 
 void Character::levelUp() {
-	int x = 25;
-	int y = 14;
 	while (exp >= 100) {
+		int x = 23;
+		int y = 15;
 		level++;
 		exp %= 100;
-		printScript(x, y, "레벨업! 현재 레벨: " + to_string(level));
+
 		maxHP = maxHP + 20;
 		maxMP = maxMP + 10;
 		attack = attack + 5;
 		HP = maxHP;
+		setColor(yellow, black);
+		printScript(x, y, "레벨업!        ");
+		printScript(x, y, "Name: " + name);
+		printScript(x, y, "Level: " + to_string(level));
+		printScript(x, y, "HP: " + to_string(HP) + "/" + to_string(maxHP));
+		printScript(x, y, "MP: " + to_string(MP));
+		printScript(x, y, "Attack: " + to_string(attack));
+		printScript(x, y, "Exp: " + to_string(exp) + "     ");
+		printScript(x, y, "Exp: " + to_string(gold));
+		setColor(white, black);
 	}
+	return;
 }
 // 원하는 아이템을 꺼내서 쓰는 기능 ai의 도움을 받아 구현
 void Character::useItem(const string& itemName) {			// 아이템의 이름으로 인벤토리에서 검색
@@ -97,17 +110,38 @@ void Character::visitShop() {
 		choice = _getch() - '0';
 		switch (choice) {
 		case 1:
-			x = 50;
-			y = 15;
-			printScript(x, y, "어떤 아이템을 구매할텐가?");
+			x = 66;
+			y = 12;
+			for (int i = 0; i < 7; i++) {
+				printScript(x, y, "                               ");
+			}
+			x = 96;
+			y = 7;
+			printScript(x, y, "판매하기");
+			x = 70;
+			y = 7;
+			setColor(red, blue);
+			printScript(x, y, "구매하기");
+			setColor(white, black);
 			shop->displayItem();
 			index = _getch() - '0';
 			shop->buyItem(index - 1, this);
 			break;
 		case 2:
-			x = 50;
-			y = 15;
-			printScript(x, y, "어떤 아이템을 판매할텐가?");
+			x = 66;
+			y = 12;
+			for (int i = 0; i < 7; i++) {
+				printScript(x, y, "                               ");
+			}
+			x = 70;
+			y = 7;
+			printScript(x, y, "구매하기");
+			x = 96;
+			y = 7;
+			setColor(red, blue);
+			printScript(x, y, "판매하기");
+			setColor(white, black);
+			displayInventory();
 			index = _getch() - '0';
 			shop->sellItem(index - 1, this);
 			break;
@@ -154,10 +188,22 @@ int Character::setAttack(int buff)
 	return attack += buff;
 }
 
-int Character::displayInventory()
+void Character::displayInventory()
 {
+	int x = 66;
+	int y = 12;
+	for (int i = 0; i < 7; i++) {
+		printScript(x, y, "                               ");
+	}
+	y = 12;
+	printScript(x, y, "자네의 물품을 살펴보지");
+	int num = 1;
+	y = 15;
+	for (Item* item : inventory) {
 
-	return 0;
+		printScript(x, y, "[" + to_string(num) + "]" + item->getName() + "  가격:" + to_string(static_cast<int>(item->getPrice() * 0.6)));
+		num++;
+	}
 }
 
 int Character::takeDamage(int damage) {
@@ -171,7 +217,6 @@ int Character::takeDamage(int damage) {
 void Character::setExp(int exp) {
 	this->exp += exp;
 	cout << exp << " 경험치 획득!" << endl;
-	levelUp(); // 레벨업 확인
 }
 
 vector<Item*>& Character::getInventory()
@@ -182,7 +227,6 @@ vector<Item*>& Character::getInventory()
 void Character::addItem(Item* item) {
 	if (item != nullptr) {
 		inventory.push_back(item);
-		cout << "아이템: " << item->getName() << "을 인벤토리에 넣었습니다." << endl;
 	}
 }
 
