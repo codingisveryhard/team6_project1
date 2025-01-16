@@ -71,26 +71,25 @@ void GameManager::battle(Character* player)
         cout << "이 소리들은.." << endl;
     }
     else if (monster->getName() == "EaredMoster") {
-        cout << "멀 조용히 하라는거야 아무말도 안했는데..." << endl;
-        cout << "귀가 커서 예민한걸까?" << endl;
+        cout << "..............." << endl;
         cout << "조용히 접근해야겠어" << endl;
     }
     else if (monster->getName() == "PerforatedMonster") {
         cout << "으악! 몸에 구멍이 나있어??!!!" << endl;
         cout << "이 녀석은 또 어떻게 해치워야 하는걸까.." << endl;
-        cout << "일단 시도해보자!" << endl;
+        
     }
     else if (monster->getName() == "ChildMonster") {
         cout << "그건 다 옛날 얘기일뿐이야.." << endl;
     }
     else if (monster->getName() == "CryingMonster") {
-        cout << "이 녀석은 상태가 조금 다른데..?" << endl;
-        cout << "조심해야겠어" << endl;
+        cout << "울고있잔아..?" << endl;
+        cout << "....일단 생각하지 말자" << endl;
     }
     else if (monster->getName() == "FacelessMan") {
-        cout << "그것?" << endl;
-        cout << "그것이 의미하는게 뭐지..?" << endl;
-        cout << "내 의지는 지금 여길 벗어나는 것 뿐이야!" << endl;
+        cout << "많은것을 겪었고" << endl;
+        cout << "많은것을 보았죠" << endl;
+        cout << "“의지”로 지금에 이르렀습니다." << endl;
     }
   
     wait();
@@ -124,20 +123,16 @@ void GameManager::battle(Character* player)
                 cout << "이제...더는 불안해 하지 않아도 돼" << endl;
             }
             else if (monster->getName() == "PerforatedMonster") {
-                cout << "이것들에 정체에 대해 이제 조금씩 실마리가 잡히는것 같아" << endl;
                 cout << "더 나아가보자" << endl;
             }
             else if (monster->getName() == "ChildMonster") {
-                cout << "이렇게 쉽게 쓰러질 줄 알았다면 조금 더 오래 즐길 걸" << endl;
-                cout << "재미없어" << endl;
+                cout << "모든것이 끝나가고 있다." << endl;
             }
             else if (monster->getName() == "CryingMonster") {
-                cout << "칫...생각보다 별 거 없잖아?" << endl;
-                cout << "이제는 아무도 날 이길 수 없어" << endl;
+                cout << "당신은 여정의 끝이 보이는 듯 하다." << endl;
             }
             else if (monster->getName() == "FacelessMan") {
-                cout << "휴우...드디어 저 문 턱만 넘으면 이곳에서 벗어 날 수 있어" << endl;
-                cout << "세상 밖으로 나가자" << endl;
+                cout << "모든것이 끝나고 당신은 문앞에 서게된다 " << endl;
             }
 
             monster->monsterText(); // 몬스터가 죽기 전 대사 출력 수정
