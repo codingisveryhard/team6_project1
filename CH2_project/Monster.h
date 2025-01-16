@@ -18,80 +18,80 @@ public:
 	}
 };
 
-class Goblin : public Monster {
-private:
-	string name;
-	int health;
-	int attack;
-	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
-
-public:
-	Goblin(int level);
-	string getName() override;
-	int getHP() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
-	Item* dropItem() override;
-
-	void speak() override; //수정사항 250115
-	void monsterText() override;
-};
-
-class Orc : public Monster {
-private:
-	string name;
-	int health;
-	int attack;
-	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
-
-public:
-	Orc(int level);
-	string getName() override;
-	int getHP() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
-	Item* dropItem() override;
-
-	void speak() override; // 수정사항 250115
-	void monsterText() override;
-};
-
-class Troll : public Monster {
-private:
-	string name;
-	int health;
-	int attack;
-	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
-
-public:
-	Troll(int level);
-	string getName() override;
-	int getHP() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
-	Item* dropItem() override;
-
-	void speak() override; //수정사항 250115
-	void monsterText() override;
-};
-
-class BossMonster : public Monster {
-private:
-	string name;
-	int health;
-	int attack;
-
-public:
-	BossMonster(int level);
-	string getName() override;
-	int getHP() override;
-	int getAttack() override;
-	void takeDamage(int damage) override;
-	Item* dropItem() override;
-
-	void speak() override; //수정사항 250115
-	void monsterText() override;
-};
+//class Goblin : public Monster {
+//private:
+//	string name;
+//	int health;
+//	int attack;
+//	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
+//
+//public:
+//	Goblin(int level);
+//	string getName() override;
+//	int getHP() override;
+//	int getAttack() override;
+//	void takeDamage(int damage) override;
+//	Item* dropItem() override;
+//
+//	void speak() override; //수정사항 250115
+//	void monsterText() override;
+//};
+//
+//class Orc : public Monster {
+//private:
+//	string name;
+//	int health;
+//	int attack;
+//	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
+//
+//public:
+//	Orc(int level);
+//	string getName() override;
+//	int getHP() override;
+//	int getAttack() override;
+//	void takeDamage(int damage) override;
+//	Item* dropItem() override;
+//
+//	void speak() override; // 수정사항 250115
+//	void monsterText() override;
+//};
+//
+//class Troll : public Monster {
+//private:
+//	string name;
+//	int health;
+//	int attack;
+//	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
+//
+//public:
+//	Troll(int level);
+//	string getName() override;
+//	int getHP() override;
+//	int getAttack() override;
+//	void takeDamage(int damage) override;
+//	Item* dropItem() override;
+//
+//	void speak() override; //수정사항 250115
+//	void monsterText() override;
+//};
+//
+//class BossMonster : public Monster {
+//private:
+//	string name;
+//	int health;
+//	int attack;
+//
+//public:
+//	BossMonster(int level);
+//	string getName() override;
+//	int getHP() override;
+//	int getAttack() override;
+//	void takeDamage(int damage) override;
+//	Item* dropItem() override;
+//
+//	void speak() override; //수정사항 250115
+//	void monsterText() override;
+//};
 
 class BlindMonster : public Monster {
 private:

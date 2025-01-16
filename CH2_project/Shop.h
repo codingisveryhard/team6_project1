@@ -17,4 +17,6 @@ public:
 	void displayItem();
 	void buyItem(int index, Character* player);
 	void sellItem(int index, Character* player);
+	int shopMenuSelect();
+	int shopItemSelect();
 };

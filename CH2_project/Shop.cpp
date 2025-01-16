@@ -79,3 +79,82 @@ void Shop::sellItem(int index, Character* player)
 	inventory.erase(inventory.begin() + 0);
 	delete item;
 }
+
+int Shop::shopItemSelect() {
+	int x = 64;
+	int y = 15;
+	printScript(x, y, ">");
+	y = 15;
+	while (1) {
+		int n = keyControl();
+		switch (n) {
+		case UP:
+			if (y > 15) {
+				gotoxy(x, y);
+				cout << " ";
+				y--;
+				gotoxy(x, y);
+				cout << ">";
+			}
+			break;
+		case DOWN:
+			if (y < 21) {
+				gotoxy(x, y);
+				cout << " ";
+				y++;
+				gotoxy(x, y);
+				cout << ">";
+			}
+			break;
+		case SUBMIT:
+			printScript(x, y, " ");
+			return y - 16;
+		default:
+			break;
+		}
+	}
+
+	return 0;
+}
+
+int Shop::shopMenuSelect() {
+	int x = 15;
+	int y = 25;
+	printScript(x, y, "> 아이템 구매");
+	printScript(x, y, "  아이템 판매");
+	printScript(x, y, "  상점 나가기");
+	y = 25;
+	while (1) {
+		int n = keyControl();
+		switch (n) {
+		case UP:
+			if (y > 25) {
+				gotoxy(x, y);
+				cout << " ";
+				y--;
+				gotoxy(x, y);
+				cout << ">";
+			}
+			break;
+		case DOWN:
+			if (y < 27) {
+				gotoxy(x, y);
+				cout << " ";
+				y++;
+				gotoxy(x, y);
+				cout << ">";
+			}
+			break;
+		case SUBMIT:
+			printScript(x, y, " ");
+			return y - 25;
+		default:
+			break;
+		}
+	}
+
+	return 0;
+}
+
+
+

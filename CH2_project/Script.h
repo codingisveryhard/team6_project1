@@ -16,6 +16,9 @@ private:
 
 public:
 	void start();
+	void playerStartScript(string monstername);
+	void playerWinScript(string monstername);
+
 	void LocateXY(int x, int y);
 
 	void printbattleLog(const string& text);

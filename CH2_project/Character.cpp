@@ -91,23 +91,15 @@ void Character::useItem(const string& itemName) {			// 아이템의 이름으로
 
 	inventory.erase(it); // 인벤토리에서 제거
 	delete item; // 메모리 해제
-	cout << "남은 아이템 개수: " << inventory.size() << endl;
 }
 
 void Character::visitShop() {
 	bool exitShop = false;
 	Shop* shop = new Shop;
 	while (!exitShop){
-		int x = 15;
-		int y = 25;
-		printScript(x, y, "1. 아이템 구매");
-		printScript(x, y, "2. 아이템 판매");
-		printScript(x, y, "3. 상점 나가기");
-
-
+		int x, y;
 		int choice;
-		int index;
-		choice = _getch() - '0';
+		choice = shop->shopMenuSelect();
 		switch (choice) {
 		case 1:
 			x = 66;
@@ -124,8 +116,7 @@ void Character::visitShop() {
 			printScript(x, y, "구매하기");
 			setColor(white, black);
 			shop->displayItem();
-			index = _getch() - '0';
-			shop->buyItem(index - 1, this);
+			shop->buyItem(shop->shopItemSelect(), this);
 			break;
 		case 2:
 			x = 66;
@@ -142,8 +133,7 @@ void Character::visitShop() {
 			printScript(x, y, "판매하기");
 			setColor(white, black);
 			displayInventory();
-			index = _getch() - '0';
-			shop->sellItem(index - 1, this);
+			shop->sellItem(shop->shopItemSelect(), this);
 			break;
 		case 3:
 			exitShop = true;
