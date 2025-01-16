@@ -13,6 +13,7 @@ public:
 	virtual Item* dropItem() = 0;
 
 	virtual void speak() = 0; // 수정사항 250115
+	virtual void monsterText() = 0;
 	virtual ~Monster() {
 	}
 };
@@ -33,6 +34,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class Orc : public Monster {
@@ -51,6 +53,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; // 수정사항 250115
+	void monsterText() override;
 };
 
 class Troll : public Monster {
@@ -69,6 +72,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class BossMonster : public Monster {
@@ -86,6 +90,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class BlindMonster : public Monster {
@@ -93,6 +98,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	BlindMonster(int level);
@@ -103,6 +109,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class EyesMonster : public Monster {
@@ -110,6 +117,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	EyesMonster(int level);
@@ -120,6 +128,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class BigEaredMonster : public Monster {
@@ -127,6 +136,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	BigEaredMonster(int level);
@@ -137,6 +147,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class PerforatedMonster : public Monster {
@@ -144,6 +155,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	PerforatedMonster(int level);
@@ -154,6 +166,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class ChildMonster : public Monster {
@@ -161,6 +174,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	ChildMonster(int level);
@@ -171,6 +185,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class CryingMonster : public Monster {
@@ -178,6 +193,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	CryingMonster(int level);
@@ -188,6 +204,7 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };
 
 class FacelessMan : public Monster {
@@ -195,6 +212,7 @@ private:
 	string name;
 	int health;
 	int attack;
+	MorPhinePotion morphinePotion; // 드랍할 원본 아이템
 
 public:
 	FacelessMan(int level);
@@ -205,4 +223,5 @@ public:
 	Item* dropItem() override;
 
 	void speak() override; //수정사항 250115
+	void monsterText() override;
 };

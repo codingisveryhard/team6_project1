@@ -1,56 +1,55 @@
 #include "Item.h"
 
-string Item::getName()
-{
-	return string();
-}
-
-void Item::use(Character* character)
-{
-}
-
-HealthPotion::HealthPotion()
-{
-	name = "HealthPotion";
-	healthRestore = 50;
-}
-
-string HealthPotion::getName()
+string Item::getName() const
 {
 	return name;
 }
 
-int HealthPotion::getPrice()
+void Item::use(Character* character)  {
+}
+
+int Item::getPrice() const
 {
 	return price;
 }
 
-// 체력회복을 정해진 값이 아닌 최대체력 비례로 만들어 보았다.
-void HealthPotion::use(Character* character)
-{
-	int beginHP = character->getHP();
-	int maxHP = character->getMaxHP();
-	healthRestore = maxHP * 0.3;
-	character->setHP(healthRestore);
-	cout << "체력이 " << beginHP << " -> " << character->getHP() << "(" << healthRestore << ")" << " 만큼 회복되었습니다." << endl;
+Item* MorPhinePotion::clone() const {
+	return new MorPhinePotion(*this); // 복사본 반환
 }
 
-AttackBoost::AttackBoost()
-{
-	name = "HealthPotion";
-	attackBoost = 10;
+void MorPhinePotion::use(Character* character) {
+	character->setHP(healthRestore); // 체력회복
 }
 
-string AttackBoost::getName()
-{
-	return string();
+Item* CocainePotion::clone() const {
+	return new CocainePotion(*this); // 복사본 반환
 }
 
-int AttackBoost::getPrice()
-{
-	return price;
+void CocainePotion::use(Character* character) {
+	character->setAttack(attackPower); //공격력 증가
 }
 
-void AttackBoost::use(Character* character)
-{
+Item* HeroinPotion::clone() const {
+	return new HeroinPotion(*this); // 복사본 반환
+}
+
+void HeroinPotion::use(Character* character) {
+	character->setHP(healthRestore); //체력 회복
+}
+
+Item* LSDPotion::clone() const {
+	return new LSDPotion(*this); // 복사본 반환
+}
+
+void LSDPotion::use(Character* character) {
+	character->setHP(healthRestore); //체력회복
+	character->setAttack(attackPower); //공격력 증가
+}
+
+Item* IVbeltWeapon::clone() const {
+	return new IVbeltWeapon(*this); // 복사본 반환
+}
+
+void IVbeltWeapon::use(Character* character) {
+	character->setAttack(attackPower); //공격력 증가
 }

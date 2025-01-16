@@ -36,11 +36,21 @@ Item* Goblin::dropItem() {
 void Goblin::speak()
 {
     if (health > 0) {
-        cout << name << ":죽여버리겠다!" << endl;
+        cout << "죽여버리겠다!" << endl;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "내가 지다니.." << endl;
     }
+}
+
+void Goblin::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
 }
 
 Orc::Orc(int level) : name("Orc") {
@@ -81,6 +91,16 @@ void Orc::speak()
     else {
         cout << name << ":너를 이길수없다.." << endl;
     }
+}
+
+void Orc::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
 }
 
 Troll::Troll(int level) : name("Troll") {
@@ -124,6 +144,16 @@ void Troll::speak()
     }
 }
 
+void Troll::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
+}
+
 BossMonster::BossMonster(int level) : name("BossMonster") {
     health = level * (20 + rand() % 11);
     attack = level * (5 + rand() % 6);
@@ -162,6 +192,16 @@ void BossMonster::speak()
     else {
         cout << name << ":이럴수가.. 내가 패배하다니.." << endl;
     }
+}
+
+void BossMonster::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
 }
 
 BlindMonster::BlindMonster(int level) : name("BlindMonster") {
@@ -205,6 +245,16 @@ void BlindMonster::speak()
     }
 }
 
+void BlindMonster::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
+}
+
 EyesMonster::EyesMonster(int level) : name("EyesMonster") {
     health = level * (20 + rand() % 11);
     attack = level * (5 + rand() % 6);
@@ -244,6 +294,16 @@ void EyesMonster::speak()
     else {
         cout << name << ":내가 지다니.." << endl;
     }
+}
+
+void EyesMonster::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
 }
 
 BigEaredMonster::BigEaredMonster(int level) : name("BigEaredMonster") {
@@ -287,6 +347,16 @@ void BigEaredMonster::speak()
     }
 }
 
+void BigEaredMonster::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
+}
+
 PerforatedMonster::PerforatedMonster(int level) : name("PerforatedMonster") {
     health = level * (20 + rand() % 11);
     attack = level * (5 + rand() % 6);
@@ -326,6 +396,16 @@ void PerforatedMonster::speak()
     else {
         cout << name << ":내가 지다니.." << endl;
     }
+}
+
+void PerforatedMonster::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
 }
 
 ChildMonster::ChildMonster(int level) : name("ChildMonster") {
@@ -369,6 +449,16 @@ void ChildMonster::speak()
     }
 }
 
+void ChildMonster::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
+}
+
 CryingMonster::CryingMonster(int level) : name("CryingMonster") {
     health = level * (20 + rand() % 11);
     attack = level * (5 + rand() % 6);
@@ -408,6 +498,16 @@ void CryingMonster::speak()
     else {
         cout << name << ":내가 지다니.." << endl;
     }
+}
+
+void CryingMonster::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
 }
 
 FacelessMan::FacelessMan(int level) : name("FacelessMan") {
@@ -452,4 +552,14 @@ void FacelessMan::speak()
     else {
         cout << name << ":내가 지다니.." << endl;
     }
+}
+
+void FacelessMan::monsterText() {
+    int x = 80;
+    int y = 5;
+    printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+    printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀   ⠀⠀⠀⠀⠀⠀⣿");
+    printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+    gotoxy(82, 6);
+    speak();
 }

@@ -3,11 +3,11 @@
 class Character;
 
 Shop::Shop() {
-	availableItems.push_back(new HealthPotion());
-	availableItems.push_back(new HealthPotion());
+	availableItems.push_back(new MorPhinePotion());
+	availableItems.push_back(new HeroinPotion());
 }
 
-Shop::~Shop() {
+Shop::~Shop() {				// 소멸자 잊지 않기
 	for (Item* item : availableItems) {
 		delete item;
 	}
@@ -15,9 +15,11 @@ Shop::~Shop() {
 
 void Shop::displayItem(){
 	cout << "이런 물건이 있소." << endl;
+	int num = 1;
 	for (Item* item : availableItems) {
 
-		cout << item->getName() << endl;
+		cout << "[" << num << "]" << item->getName() << "  가격:" << item->getPrice() << endl;
+		num++;
 	}
 }
 
@@ -27,7 +29,7 @@ void Shop::buyItem(int index, Character* player) {
 		return;
 	}
 
-	Item* item = availableItems[index];
+	Item* item = availableItems[index]->clone();
 	if (player->getGold() >= item->getPrice()) {
 		player->addItem(item);
 		player->setGold(item->getPrice() * -1);

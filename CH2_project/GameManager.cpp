@@ -42,15 +42,16 @@ BossMonster* GameManager::generateBossMonster(int level)
 
 void GameManager::battle(Character* player)
 {
-    cout << endl << "전투를 시작합니다!" << endl;
-
+    system("cls");
+    battlePhase();
+    stage1();
+    Script script;
+    script.printbattleLog("전투가 시작된다!");
     Monster* monster = generateMonster(player->getLevel());
 
     // 몬스터 정보 출력
-<<<<<<< Updated upstream
     cout << "몬스터 등장: " << monster->getName();
     cout << "체력: " << monster->getHP() << ", 공격력: " << monster->getAttack() << endl << endl;
-=======
 
     script.printbattleLog("몬스터 등장: " + monster->getName());
     script.printbattleLog("체력: " + to_string(monster->getHP()) + ", 공격력: " + to_string(monster->getAttack()));
@@ -58,7 +59,7 @@ void GameManager::battle(Character* player)
     cout << monster->getName();
 
     monster->monsterText(); // 몬스터가 처음 등장할 때 대사 출력 수정
-   
+  
     //주인공 대사 0116
     if (monster->getName() == "BlindMonster") {
         cout << "이게... 무슨 일이지? 너는..?" << endl;
@@ -90,20 +91,16 @@ void GameManager::battle(Character* player)
         cout << "그것이 의미하는게 뭐지..?" << endl;
         cout << "내 의지는 지금 여길 벗어나는 것 뿐이야!" << endl;
     }
-    
->>>>>>> Stashed changes
 
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
-        cout << endl << i << " 번째 턴!" << endl;
+        script.printbattleLog(to_string(i) + " 번째 턴!");
         // 플레이어 공격
         monster->takeDamage(player->getAttack());
-        cout << "플레이어가 공격! " << monster->getName() << "의 체력: " << monster->getHP() << endl;
+        script.printbattleLog("플레이어가 공격! " + monster->getName() + "의 체력: " + to_string(monster->getHP()));
         // 몬스터 처치 시
         if (monster->getHP() <= 0) {
-<<<<<<< Updated upstream
             cout << monster->getName() << "를 처치했습니다!" << endl << endl;
             player->setExp(50);
-=======
 
             script.printbattleLog(monster->getName() + "를 처치했습니다!");
             player->setExp(50);                         // 경험치 획득량
@@ -140,30 +137,37 @@ void GameManager::battle(Character* player)
                 cout << "세상 밖으로 나가자" << endl;
             }
 
->>>>>>> Stashed changes
+            monster->monsterText(); // 몬스터가 죽기 전 대사 출력 수정
+            wait();
             player->displayStatus();
-            player->setGold(player->getLevel() * 10);
             Item* dropedItem = monster->dropItem();
             if (dropedItem != nullptr) {
-                cout << "아이템을 획득하셨습니다." << endl << "획득한 아이템: " << dropedItem->getName() << endl;
+                script.printbattleLog("아이템을 획득하셨습니다. 획득한 아이템: " + dropedItem->getName());
                 player->addItem(dropedItem);
             }
-
-            player->visitShop();
+            wait();
+            choiceWindow();
+            int shop = battleMenu();
+            if (shop == 0) {
+                system("cls");
+                shopWindow();
+                player->visitShop();
+            }
             break;
         }
 
         // 몬스터 공격
+        script.printbattleLog("몬스터가 공격!");
         player->takeDamage(monster->getAttack());
-        cout << "몬스터가 공격! 플레이어 체력: " << player->getHP() << endl;
+        
         // 플레이어 사망 시
         if (player->getHP() <= 0) {
-            cout << "플레이어가 사망했습니다!" << endl;
             break;
         }
-        if (player->getHP() < player->getMaxHP()*0.2) {
-            player->useItem(0);
+        if (player->getHP() < player->getMaxHP()*0.5) {
+            player->useItem("Morphine");
         }
+        wait();
 
     }
 
