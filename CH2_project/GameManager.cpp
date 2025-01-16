@@ -83,13 +83,14 @@ void GameManager::battle(Character* player)
         cout << "그건 다 옛날 얘기일뿐이야.." << endl;
     }
     else if (monster->getName() == "CryingMonster") {
-        cout << "울고있잔아..?" << endl;
-        cout << "....일단 생각하지 말자" << endl;
+        cout << "....당신은" << endl;
+        cout << "일단 전투에 집중하자" << endl;
     }
     else if (monster->getName() == "FacelessMan") {
-        cout << "많은것을 겪었고" << endl;
-        cout << "많은것을 보았죠" << endl;
-        cout << "“의지”로 지금에 이르렀습니다." << endl;
+        cout << "“그것”으로 인해 많은것을 보았고, 많은것을 겪었죠" << endl;
+        cout << "겨우 여기까지 도달할 수 있었습니다." << endl;
+        cout << "이번이 마지막이 되기를" << endl;
+        cout << "당신은 의지로 가득찼다." << endl;
     }
   
     wait();
@@ -117,7 +118,7 @@ void GameManager::battle(Character* player)
                 cout << "앞으로 이런 녀석들이 얼마나 더 있는걸까" << endl;
             }
             else if (monster->getName() == "EaredMoster") {
-                cout << "이제...더는 불안해 하지 않아도 돼" << endl;
+                cout << "이것들은...도대체" << endl;
             }
             else if (monster->getName() == "PerforatedMonster") {
                 cout << "더 나아가보자" << endl;
