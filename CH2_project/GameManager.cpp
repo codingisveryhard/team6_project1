@@ -35,10 +35,6 @@ Monster* GameManager::generateMonster(int level)
     }
 }
 
-BossMonster* GameManager::generateBossMonster(int level)
-{
-    return nullptr;
-}
 
 void GameManager::battle(Character* player)
 {
@@ -56,43 +52,12 @@ void GameManager::battle(Character* player)
     script.printbattleLog("몬스터 등장: " + monster->getName());
     script.printbattleLog("체력: " + to_string(monster->getHP()) + ", 공격력: " + to_string(monster->getAttack()));
     setColor(brown, black);
-    gotoxy(15, 4);
+    gotoxy(10, 4);
     cout << monster->getName();
     setColor(white, black);
 
     monster->monsterText(); // 몬스터가 처음 등장할 때 대사 출력 수정
-  
-    if (monster->getName() == "BlindMonster") {
-        cout << "이게... 무슨 일이지? 너는..?" << endl;
-        cout << "못알아듣는건가..? 뭐..뭐야...으아악!!" << endl;
-    }
-    else if (monster->getName() == "EyesMonster") {
-        cout << "어디서 이런소리가 들리는거지?" << endl;
-        cout << "이 소리들은.." << endl;
-    }
-    else if (monster->getName() == "EaredMoster") {
-        cout << "..............." << endl;
-        cout << "조용히 접근해야겠어" << endl;
-    }
-    else if (monster->getName() == "PerforatedMonster") {
-        cout << "으악! 몸에 구멍이 나있어??!!!" << endl;
-        cout << "이 녀석은 또 어떻게 해치워야 하는걸까.." << endl;
-        
-    }
-    else if (monster->getName() == "ChildMonster") {
-        cout << "그건 다 옛날 얘기일뿐이야.." << endl;
-    }
-    else if (monster->getName() == "CryingMonster") {
-        cout << "....당신은" << endl;
-        cout << "일단 전투에 집중하자" << endl;
-    }
-    else if (monster->getName() == "FacelessMan") {
-        cout << "“그것”으로 인해 많은것을 보았고, 많은것을 겪었죠" << endl;
-        cout << "겨우 여기까지 도달할 수 있었습니다." << endl;
-        cout << "이번이 마지막이 되기를" << endl;
-        cout << "당신은 의지로 가득찼다." << endl;
-    }
-  
+    script.playerStartScript(monster->getName());
     wait();
   
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
@@ -106,34 +71,10 @@ void GameManager::battle(Character* player)
             player->setExp(100);                         // 경험치 획득량
             player->setGold(player->getLevel() * 10);   // 골드 획득량
 
-            monster->speak(); // 몬스터가 죽은 후 대사 출력 수정
-            
-            // 주인공 대사 0116
-            if (monster->getName() == "BlindMonster") {
-                cout << "갑자기 공격하다니 위험했어" << endl;
-                cout << "빨리 이곳을 나가자" << endl;
-            }
-            else if (monster->getName() == "EyesMonster") {
-                cout << "어째서 괴물들을 만나게 된거지...?" << endl;
-                cout << "앞으로 이런 녀석들이 얼마나 더 있는걸까" << endl;
-            }
-            else if (monster->getName() == "EaredMoster") {
-                cout << "이것들은...도대체" << endl;
-            }
-            else if (monster->getName() == "PerforatedMonster") {
-                cout << "더 나아가보자" << endl;
-            }
-            else if (monster->getName() == "ChildMonster") {
-                cout << "모든것이 끝나가고 있다." << endl;
-            }
-            else if (monster->getName() == "CryingMonster") {
-                cout << "당신은 여정의 끝이 보이는 듯 하다." << endl;
-            }
-            else if (monster->getName() == "FacelessMan") {
-                cout << "모든것이 끝나고 당신은 문앞에 서게된다 " << endl;
-            }
-
             monster->monsterText(); // 몬스터가 죽기 전 대사 출력 수정
+
+            script.playerWinScript(monster->getName());
+
             wait();
             player->displayStatus();
             Item* dropedItem = monster->dropItem();

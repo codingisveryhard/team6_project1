@@ -71,33 +71,5 @@ int main() {
     }
     Character::destroyInstance();
     
-
-    // 몬스터 생성 추가 수정사항 250115
-    Goblin goblin(1);
-    Orc orc(2);
-    Troll troll(3);
-    BossMonster boss(5);
-
-    // Goblin 대사 출력
-    cout << "Goblin 등장!" << endl;
-    goblin.speak();
-
-    // Goblin 공격 받음
-    goblin.takeDamage(50);
-    cout << "Goblin이 공격을 받았습니다! (HP: " << goblin.getHP() << ")" << endl;
-    goblin.speak();
-
-    // Orc 대사 출력
-    cout << "\nOrc 등장!" << endl;
-    orc.speak();
-
-    // Troll 대사 출력
-    cout << "\nTroll 등장!" << endl;
-    troll.speak();
-
-    // Boss 대사 출력
-    cout << "\nBossMonster 등장!" << endl;
-    boss.speak();
-    
     return 0;
 }
