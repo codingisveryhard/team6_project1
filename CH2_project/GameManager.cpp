@@ -41,26 +41,31 @@ void GameManager::battle(Character* player)
     system("cls");
     battlePhase();
     stageDraw(player->getLevel());
+    player->displayBattleBar();
     Script script;
     script.printbattleLog("전투가 시작된다!");
     Monster* monster = generateMonster(player->getLevel());
 
     // 몬스터 정보 출력
     cout << "몬스터 등장: " << monster->getName();
-    cout << "체력: " << monster->getHP() << ", 공격력: " << monster->getAttack() << endl << endl;
 
     script.printbattleLog("몬스터 등장: " + monster->getName());
     script.printbattleLog("체력: " + to_string(monster->getHP()) + ", 공격력: " + to_string(monster->getAttack()));
+    
     setColor(brown, black);
     gotoxy(10, 4);
     cout << monster->getName();
     setColor(white, black);
 
-    monster->monsterText(); // 몬스터가 처음 등장할 때 대사 출력 수정
+    
     script.playerStartScript(monster->getName());
+    wait();
+    monsterDraw(player->getLevel());
+    monster->monsterText(); // 몬스터가 처음 등장할 때 대사 출력 수정
     wait();
   
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
+        player->displayBattleBar();
         script.printbattleLog(to_string(i) + " 번째 턴!");
         // 플레이어 공격
         monster->takeDamage(player->getAttack());
@@ -94,7 +99,7 @@ void GameManager::battle(Character* player)
         }
 
         // 몬스터 공격
-        script.printbattleLog("몬스터가 공격!");
+        script.printbattleLog("몬스터가 공격!   " + to_string(monster->getAttack()) + "만큼의 공격을 받았다.");
         player->takeDamage(monster->getAttack());
         
         // 플레이어 사망 시
@@ -128,4 +133,14 @@ void GameManager::stageDraw(int level) {
     else if (level == 5) stage5();
     else if (level == 6) stage6();
     else if (level == 7) stage7();
+}
+
+void GameManager::monsterDraw(int level) {
+    if (level == 1) monsterImg1();
+    else if (level == 2) monsterImg2();
+    else if (level == 3) monsterImg3();
+    else if (level == 4) monsterImg4();
+    else if (level == 5) monsterImg5();
+    else if (level == 6) monsterImg6();
+    else if (level == 7) monsterImg7();
 }

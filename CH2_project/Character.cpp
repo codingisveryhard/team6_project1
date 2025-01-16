@@ -229,6 +229,26 @@ void Character::setGold(int gold) {
 	this->gold += gold;
 }
 
+void Character::displayBattleBar()
+{
+	gotoxy(15, 35);
+	cout << "           ";
+	gotoxy(40, 35);
+	cout << "           ";
+	gotoxy(60, 35);
+	cout << "           ";
+	gotoxy(94, 35);
+	cout << "           ";
+	gotoxy(15, 35);
+	cout << "레벨: " << getLevel();
+	gotoxy(40, 35);
+	cout << "체력: " << getHP();
+	gotoxy(60, 35);
+	cout << "공격력: " << getAttack();
+	gotoxy(94, 35);
+	cout << "골드: " << getGold();
+}
+
 Character::~Character() {
 	for (Item* item : inventory) {
 		delete item;  // 벡터에 저장된 모든 아이템 메모리 해제

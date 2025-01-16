@@ -15,4 +15,5 @@ public:
 	void visitShop(Character* player);
 	void displayInventory(Character* player);
 	void stageDraw(int stagenum);
+	void monsterDraw(int stagenum);
 };

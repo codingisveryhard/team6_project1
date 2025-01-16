@@ -118,7 +118,7 @@ void Script::printbattleLog(const string& text) {
 	// 큐에서 로그를 하나씩 꺼내서 출력
 	while (!tempQueue.empty()) {
 		gotoxy(battleX, currentY); // Y 좌표로 커서 이동
-		cout << string(50, ' '); // 해당 위치를 빈 공간으로 덮어쓰기 (기존 내용 지우기)
+		cout << string(90, ' '); // 해당 위치를 빈 공간으로 덮어쓰기 (기존 내용 지우기)
 		gotoxy(battleX, currentY++); // Y 좌표를 줄여가며 출력
 		cout << tempQueue.front();   // 로그 출력
 		tempQueue.pop(); // 출력한 로그 제거

@@ -52,6 +52,7 @@ public:
 	void addItem(Item* item);
 	int getGold();
 	void setGold(int gold);
+	void displayBattleBar();
 	// 인벤토리에 있는 모든 아이템 메모리 해제
 	~Character();
 
