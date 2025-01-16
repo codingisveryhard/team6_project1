@@ -37,7 +37,7 @@ int main() {
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);   // 메모리 누수 확인용
     // _CrtSetBreakAlloc(661);   // 메모리 누수 확인용 (브레이크 포인트 설정)
     
-    eraseCursor();      // 커서 지워버리기
+    //eraseCursor();      // 커서 지워버리기
     system("mode con cols=120 lines=40 | title 창 제목");  // 콘솔 사이즈 정하기
     titleImg();                // 타이틀 화면 보이게하기
     menuDraw();         // 메뉴 화면

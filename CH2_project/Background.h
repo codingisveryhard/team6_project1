@@ -12,6 +12,8 @@ void gameInfo();
 
 int menuDraw();
 
+int battleMenu();
+
 //
 void battlePhase();
 
