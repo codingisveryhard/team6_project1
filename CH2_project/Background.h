@@ -23,6 +23,8 @@ void statusWindow();
 
 void choiceWindow();
 
+void intro();
+
 void stage1();
 void stage2();
 void stage3();

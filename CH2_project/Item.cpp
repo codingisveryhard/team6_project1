@@ -18,7 +18,7 @@ Item* MorPhinePotion::clone() const {
 }
 
 void MorPhinePotion::use(Character* character) {
-	character->setHP(healthRestore); // 체력회복
+	character->setHP(attackPower); // 체력회복
 }
 
 Item* CocainePotion::clone() const {
