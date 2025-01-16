@@ -241,7 +241,7 @@ void BlindMonster::speak()
         cout << "아무것도 보고싶지 않아.." << endl;;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "너가.. 할 수 있을까..." << endl;
     }
 }
 
@@ -292,7 +292,7 @@ void EyesMonster::speak()
         cout << "수군수군…수군수군…" << endl;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "눈이 감기며 수근거리는 목소리가 사라졌다." << endl;
     }
 }
 
@@ -343,7 +343,7 @@ void BigEaredMonster::speak()
         cout << "시끄러워..! 조용히… 조용히해!!!" << endl;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "날 미워하지 말아줘" << endl;
     }
 }
 
@@ -394,7 +394,7 @@ void PerforatedMonster::speak()
         cout << "운동…건강…프로틴…!!" << endl;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "의지를 잊지마." << endl;
     }
 }
 
@@ -445,7 +445,7 @@ void ChildMonster::speak()
         cout << "내 꿈은…?" << endl;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "왠지 모르게 넌 해낼 수 있을 거 같아" << endl;
     }
 }
 
@@ -496,7 +496,7 @@ void CryingMonster::speak()
         cout << "흑흑…" << endl;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "널 항상 사랑한단다." << endl;
     }
 }
 
@@ -550,7 +550,9 @@ void FacelessMan::speak()
         cout << "“의지”가 있었다면 말이야" << endl;
     }
     else {
-        cout << name << ":내가 지다니.." << endl;
+        cout << "너가 보여준 의지대로" << endl;
+        cout << "앞으로 향해 걸어 나가거라" << endl;
+        cout << "자격이 있으며 모든것에 당당해지거라" << endl;
     }
 }
 
