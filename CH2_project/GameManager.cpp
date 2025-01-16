@@ -32,11 +32,13 @@ void GameManager::battle(Character* player)
 
     script.printbattleLog("몬스터 등장: " + monster->getName());
     script.printbattleLog("체력: " + to_string(monster->getHP()) + ", 공격력: " + to_string(monster->getAttack()));
+    setColor(brown, black);
     gotoxy(15, 4);
     cout << monster->getName();
+    setColor(white, black);
 
     monster->monsterText(); // 몬스터가 처음 등장할 때 대사 출력 수정
-
+    wait();
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
         script.printbattleLog(to_string(i) + " 번째 턴!");
         // 플레이어 공격

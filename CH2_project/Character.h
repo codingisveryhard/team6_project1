@@ -32,8 +32,8 @@ private:
 
 public:
 	static Character* getInstance(string name);
-	void displayStatus();
-	void levelUp();
+	void displayStatus();					// int를 써야할 이유를 찾지 못했기에 void로 변경
+	void levelUp();							// 레벨업 판별을 위해 int로 형식변경
 	void useItem(const string& itemName);
 	void visitShop();
 
@@ -45,7 +45,7 @@ public:
 	int setHP(int heal);
 	int getAttack();
 	int setAttack(int buff);
-	int displayInventory();
+	void displayInventory();
 	int takeDamage(int damage);
 	void setExp(int exp);
 	vector<Item*>& getInventory();		// 아이템 판매 시 필요
