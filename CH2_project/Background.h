@@ -30,3 +30,11 @@ void stage4();
 void stage5();
 void stage6();
 void stage7();
+
+void monsterImg1();
+void monsterImg2();
+void monsterImg3();
+void monsterImg4();
+void monsterImg5();
+void monsterImg6();
+void monsterImg7();
