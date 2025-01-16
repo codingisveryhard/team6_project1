@@ -42,6 +42,7 @@ void GameManager::battle(Character* player)
     battlePhase();
     stageDraw(player->getLevel());
     player->displayBattleBar();
+    player->useItem();
     Script script;
     script.printbattleLog("전투가 시작된다!");
     Monster* monster = generateMonster(player->getLevel());
@@ -74,7 +75,7 @@ void GameManager::battle(Character* player)
         if (monster->getHP() <= 0) {
             script.printbattleLog(monster->getName() + "를 처치했습니다!");
             player->setExp(100);                         // 경험치 획득량
-            player->setGold(player->getLevel() * 10);   // 골드 획득량
+            player->setGold(player->getLevel() * 20);   // 골드 획득량
 
             monster->monsterText(); // 몬스터가 죽기 전 대사 출력 수정
 
@@ -102,16 +103,19 @@ void GameManager::battle(Character* player)
         script.printbattleLog("몬스터가 공격!   " + to_string(monster->getAttack()) + "만큼의 공격을 받았다.");
         player->takeDamage(monster->getAttack());
         
+
         // 플레이어 사망 시
         if (player->getHP() <= 0) {
             break;
         }
-        if (player->getHP() < player->getMaxHP()*0.5) {
-            player->useItem("Morphine");
-        }
+
         wait();
 
     }
+    if (player->getHP() <= 0 && player->getLevel() == 7) {
+        happyEnd();
+    }
+    else if (player->getLevel() == 8) badEnd();
 
     // 메모리 해제
     delete monster;

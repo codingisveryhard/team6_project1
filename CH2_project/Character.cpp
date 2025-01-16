@@ -72,25 +72,34 @@ void Character::levelUp() {
 	}
 	return;
 }
-// 원하는 아이템을 꺼내서 쓰는 기능 ai의 도움을 받아 구현
-void Character::useItem(const string& itemName) {			// 아이템의 이름으로 인벤토리에서 검색
-	auto it = std::find_if(inventory.begin(), inventory.end(),		// 솔직히 어떤 원리인지는 이해 못했습니다.
-		[&](Item* item) {									// [&](Item* item) 무슨 의미일까요.
-			if (!item) return false;
-			return item->getName() == itemName;
-		});
+// 원하는 아이템을 꺼내서 쓰는 기능 ai의 도움을 받아 구현(현재 용도에 맞지 않아 주석처리)
+//void Character::useItem(const string& itemName) {			// 아이템의 이름으로 인벤토리에서 검색
+//	auto it = std::find_if(inventory.begin(), inventory.end(),		// 솔직히 어떤 원리인지는 이해 못했습니다.
+//		[&](Item* item) {									// [&](Item* item) 무슨 의미일까요.
+//			if (!item) return false;
+//			return item->getName() == itemName;
+//		});
+//
+//	if (it == inventory.end()) {
+//		cout << "소지하고 있지 않은 아이템입니다." << endl;
+//		return;
+//	}
+//
+//	Item* item = *it; // 찾은 아이템
+//	item->use(this); // 아이템 사용
+//	cout << item->getName() << "을 사용했습니다" << endl;
+//
+//	inventory.erase(it); // 인벤토리에서 제거
+//	delete item; // 메모리 해제
+//}
 
-	if (it == inventory.end()) {
-		cout << "소지하고 있지 않은 아이템입니다." << endl;
-		return;
+void Character::useItem() {
+	auto it = inventory.begin(); // 반복자 시작
+	while (it != inventory.end()) {
+		(*it)->use(this); // 아이템 사용
+		delete* it; // 메모리 해제
+		it = inventory.erase(it); // 현재 아이템 제거 후 다음 아이템으로 이동
 	}
-
-	Item* item = *it; // 찾은 아이템
-	item->use(this); // 아이템 사용
-	cout << item->getName() << "을 사용했습니다" << endl;
-
-	inventory.erase(it); // 인벤토리에서 제거
-	delete item; // 메모리 해제
 }
 
 void Character::visitShop() {
@@ -169,6 +178,12 @@ int Character::setHP(int heal) {
 	return HP;
 }
 
+int Character::setMaxHP(int heal)
+{
+	maxHP += heal;
+	return maxHP;
+}
+
 int Character::getAttack() {
 	return attack;
 }
@@ -206,7 +221,6 @@ int Character::takeDamage(int damage) {
 
 void Character::setExp(int exp) {
 	this->exp += exp;
-	cout << exp << " 경험치 획득!" << endl;
 }
 
 vector<Item*>& Character::getInventory()
@@ -255,6 +269,7 @@ Character::~Character() {
 	}
 	inventory.clear();  // 벡터 초기화
 }
+
 
 void Character::Attach(const shared_ptr<IObserver>& observer) {
 	observers.push_back(observer);

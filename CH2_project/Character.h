@@ -34,7 +34,7 @@ public:
 	static Character* getInstance(string name);
 	void displayStatus();					// int를 써야할 이유를 찾지 못했기에 void로 변경
 	void levelUp();							// 레벨업 판별을 위해 int로 형식변경
-	void useItem(const string& itemName);
+	void useItem();
 	void visitShop();
 
 	//추가된 메서드
@@ -43,6 +43,7 @@ public:
 	int getHP();
 	int getMaxHP();
 	int setHP(int heal);
+	int setMaxHP(int heal);
 	int getAttack();
 	int setAttack(int buff);
 	void displayInventory();
