@@ -50,7 +50,7 @@ void GameManager::battle(Character* player)
             player->setGold(player->getLevel() * 10);   // 골드 획득량
 
             monster->monsterText(); // 몬스터가 죽기 전 대사 출력 수정
-
+            wait();
             player->displayStatus();
             Item* dropedItem = monster->dropItem();
             if (dropedItem != nullptr) {
@@ -58,8 +58,13 @@ void GameManager::battle(Character* player)
                 player->addItem(dropedItem);
             }
             wait();
-            shopWindow();
-            player->visitShop();
+            choiceWindow();
+            int shop = battleMenu();
+            if (shop == 0) {
+                system("cls");
+                shopWindow();
+                player->visitShop();
+            }
             break;
         }
 
