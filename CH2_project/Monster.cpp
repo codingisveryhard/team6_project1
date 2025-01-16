@@ -394,7 +394,7 @@ void PerforatedMonster::speak()
         cout << "운동…건강…프로틴…!!" << endl;
     }
     else {
-        cout << "의지를 잊지마." << endl;
+        cout << "그 의지를 잊지마." << endl;
     }
 }
 
@@ -496,7 +496,7 @@ void CryingMonster::speak()
         cout << "흑흑…" << endl;
     }
     else {
-        cout << "널 항상 사랑한단다." << endl;
+        cout << "언제나 널 사랑한단다." << endl;
     }
 }
 
@@ -550,9 +550,7 @@ void FacelessMan::speak()
         cout << "“의지”가 있었다면 말이야" << endl;
     }
     else {
-        cout << "너가 보여준 의지대로" << endl;
-        cout << "앞으로 향해 걸어 나가거라" << endl;
-        cout << "자격이 있으며 모든것에 당당해지거라" << endl;
+        cout << "그동안 만나서 즐거웠네" << endl;
     }
 }
 
