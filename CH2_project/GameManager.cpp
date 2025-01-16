@@ -55,12 +55,13 @@ void GameManager::battle(Character* player)
 
     script.printbattleLog("몬스터 등장: " + monster->getName());
     script.printbattleLog("체력: " + to_string(monster->getHP()) + ", 공격력: " + to_string(monster->getAttack()));
+    setColor(brown, black);
     gotoxy(15, 4);
     cout << monster->getName();
+    setColor(white, black);
 
     monster->monsterText(); // 몬스터가 처음 등장할 때 대사 출력 수정
   
-    //주인공 대사 0116
     if (monster->getName() == "BlindMonster") {
         cout << "이게... 무슨 일이지? 너는..?" << endl;
         cout << "못알아듣는건가..? 뭐..뭐야...으아악!!" << endl;
@@ -91,7 +92,9 @@ void GameManager::battle(Character* player)
         cout << "그것이 의미하는게 뭐지..?" << endl;
         cout << "내 의지는 지금 여길 벗어나는 것 뿐이야!" << endl;
     }
-
+  
+    wait();
+  
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
         script.printbattleLog(to_string(i) + " 번째 턴!");
         // 플레이어 공격
