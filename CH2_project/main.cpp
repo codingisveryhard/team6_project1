@@ -41,6 +41,7 @@ int main() {
     system("mode con cols=120 lines=40 | title 창 제목");  // 콘솔 사이즈 정하기
     titleImg();                // 타이틀 화면 보이게하기
     menuDraw();         // 메뉴 화면
+
     system("cls");      // 콘솔 창을 깨끗하게 만드는 코드
     
     Script script;
@@ -59,6 +60,7 @@ int main() {
     auto healthBar = make_shared<HealthBar>();
     player->Attach(healthBar);
 
+    intro();
 
     // GameManager 인스턴스 생성
     GameManager gameManager;

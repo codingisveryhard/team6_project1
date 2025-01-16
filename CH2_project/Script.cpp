@@ -75,27 +75,27 @@ void Script::playerWinScript(string monstername)
 	x = 9;
 	y = 20;
 	// 주인공 대사 0116
-	if (monstername == "BlindMonster") {
+	if (monstername == "눈을 가린 괴물") {
 		printScript(x, y, "갑자기 공격하다니 위험했어");
 		printScript(x, y, "빨리 이곳을 나가자");
 	}
-	else if (monstername == "EyesMonster") {
+	else if (monstername == "백개의 눈") {
 		printScript(x, y, "어째서 괴물들을 만나게 된거지...?");
 		printScript(x, y, "앞으로 이런 것들이 얼마나 더 있는걸까");
 	}
-	else if (monstername == "BigEaredMonster") {
+	else if (monstername == "귀 큰 괴물") {
 		printScript(x, y, "이것들은...도대체");
 	}
-	else if (monstername == "PerforatedMonster") {
-		printScript(x, y, "더 나아가보자");
+	else if (monstername == "구멍 뚫린 괴물") {
+		printScript(x, y, "대체 내게 왜..");
 	}
-	else if (monstername == "ChildMonster") {
-		printScript(x, y, "모든것이 끝나가고 있다.");
+	else if (monstername == "낯익은 어린아이") {
+		printScript(x, y, "무엇인가 알 것 같다.");
 	}
-	else if (monstername == "CryingMonster") {
-		printScript(x, y, "당신은 여정의 끝이 보이는 듯 하다.");
+	else if (monstername == "친숙한 괴물") {
+		printScript(x, y, "죄송해요. 곧 찾아갈게요.");
 	}
-	else if (monstername == "FacelessMan") {
+	else if (monstername == "얼굴없는 남자") {
 		printScript(x, y, "모든것이 끝나고 당신은 문앞에 서게된다 ");
 	}
 }

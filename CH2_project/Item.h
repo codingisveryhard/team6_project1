@@ -27,12 +27,12 @@ public:
 // 체력회복 아이템 : MorPhine
 class MorPhinePotion : public Item {
 private:
-	int healthRestore; // 회복량
+	int attackPower; // 회복량
 	
 
 public:
-	MorPhinePotion() : Item("Morphine", 10), healthRestore(25){} // 초기화 -> 가격 10 회복량 25회복 설정
-	MorPhinePotion(const MorPhinePotion& other) : Item(other), healthRestore(other.healthRestore) {}
+	MorPhinePotion() : Item("M.Potion", 10), attackPower(5){} // 초기화 -> 가격 10 회복량 25회복 설정
+	MorPhinePotion(const MorPhinePotion& other) : Item(other), attackPower(other.attackPower) {}
 	Item* clone() const override;
 	void use(Character* character) override;
 };
@@ -42,7 +42,7 @@ private:
 	int attackPower; // 공격력
 
 public:
-	CocainePotion() : Item("CocainePotion", 20), attackPower(10){} // 초기화 -> 가격 20 공격력 10증가 설정
+	CocainePotion() : Item("C.Potion", 20), attackPower(10){} // 초기화 -> 가격 20 공격력 10증가 설정
 	CocainePotion(const CocainePotion& other) : Item(other), attackPower(other.attackPower) {}
 	Item* clone() const override;
 	void use(Character* character) override;
@@ -53,7 +53,7 @@ private:
 	int healthRestore; // 회복량
 
 public:
-	HeroinPotion() : Item("HeroinPotion", 20), healthRestore(50){} // 초기화 -> 가격 20 회복량 50회복 설정
+	HeroinPotion() : Item("H.Potion", 20), healthRestore(50){} // 초기화 -> 가격 20 회복량 50회복 설정
 	HeroinPotion(const HeroinPotion& other) : Item(other), healthRestore(other.healthRestore) {}
 	Item* clone() const override;
 	void use(Character* character) override;
@@ -64,7 +64,7 @@ private:
 	int healthRestore; // 회복량
 	int attackPower; // 공격력
 public:
-	LSDPotion() : Item("LSDPotion", 40), healthRestore(50), attackPower(10){} // 초기화 -> 가격 40, 회복량 50, 공격력 10 증가
+	LSDPotion() : Item("LSD.Potion", 40), healthRestore(50), attackPower(10){} // 초기화 -> 가격 40, 회복량 50, 공격력 10 증가
 	LSDPotion(const LSDPotion& other) : Item(other), healthRestore(other.healthRestore), attackPower(other.attackPower) {}
 	Item* clone() const override;
 	void use(Character* character) override;
