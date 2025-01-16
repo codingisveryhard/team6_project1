@@ -24,8 +24,19 @@ Character* Character::getInstance(string name) {
 }
 
 void Character::displayStatus() {
-	int x = 25;
-	int y = 15;
+	int x = 23;
+	int y = 14;
+	printScript(x, y, "⢠⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⣿");
+	printScript(x, y, "⢸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿");
+	printScript(x, y, "⢸⣧⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣿");
+	x = 25;
+	y = 15;
 	printScript(x, y, "Name: " + name);
 	printScript(x, y, "Level: " + to_string(level));
 	printScript(x, y, "HP: " + to_string(HP) + "/" + to_string(maxHP));

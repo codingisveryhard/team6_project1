@@ -18,3 +18,7 @@ void battlePhase();
 void shopWindow();
 
 void statusWindow();
+
+void choiceWindow();
+
+void monsterText();

@@ -34,7 +34,7 @@ void GameManager::battle(Character* player)
     gotoxy(15, 4);
     cout << monster->getName();
 
-    monster->speak(); // 몬스터가 처음 등장할 때 대사 출력 수정
+    monster->monsterText(); // 몬스터가 처음 등장할 때 대사 출력 수정
 
     for (int i = 1; monster->getHP() > 0 && player->getHP() > 0; i++) {
         script.printbattleLog(to_string(i) + " 번째 턴!");
@@ -48,7 +48,7 @@ void GameManager::battle(Character* player)
             player->setExp(50);                         // 경험치 획득량
             player->setGold(player->getLevel() * 10);   // 골드 획득량
 
-            monster->speak(); // 몬스터가 죽기 전 대사 출력 수정
+            monster->monsterText(); // 몬스터가 죽기 전 대사 출력 수정
 
             player->displayStatus();
             Item* dropedItem = monster->dropItem();
