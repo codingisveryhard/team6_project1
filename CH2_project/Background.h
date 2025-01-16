@@ -21,4 +21,4 @@ void statusWindow();
 
 void choiceWindow();
 
-void monsterText();
+void stage1();
