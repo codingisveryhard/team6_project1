@@ -106,6 +106,7 @@ void Character::visitShop() {
 	bool exitShop = false;
 	Shop* shop = new Shop;
 	while (!exitShop){
+		displayBattleBar();
 		int x, y;
 		int choice;
 		choice = shop->shopMenuSelect();
