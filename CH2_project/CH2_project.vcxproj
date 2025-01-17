@@ -144,7 +144,6 @@
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="Character.h" />
-    <ClInclude Include="BattleManager.h" />
     <ClInclude Include="ConcreteObservers.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Item.h" />
